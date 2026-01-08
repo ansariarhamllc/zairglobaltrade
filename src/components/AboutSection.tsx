@@ -19,7 +19,7 @@ const features = [
   {
     icon: Award,
     title: "Industry Expertise",
-    description: "15+ years of experience in agricultural commodity trading.",
+    description: "2+ years of experience in agricultural commodity trading.",
   },
 ];
 
@@ -74,7 +74,7 @@ const AboutSection = () => {
             </div>
             {/* Floating Card */}
             <div className="absolute -bottom-6 -left-6 bg-card rounded-xl shadow-xl p-6 border border-border">
-              <p className="text-4xl font-bold text-primary">15+</p>
+              <p className="text-4xl font-bold text-primary">2+</p>
               <p className="text-sm text-muted-foreground">Years of Excellence</p>
             </div>
           </div>

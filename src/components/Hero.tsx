@@ -45,17 +45,9 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20">
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-accent">50+</p>
-              <p className="text-sm text-primary-foreground/70">Countries Served</p>
-            </div>
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-accent">200+</p>
-              <p className="text-sm text-primary-foreground/70">Products Range</p>
-            </div>
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-accent">15+</p>
+          <div className="flex justify-center mt-16 pt-8 border-t border-primary-foreground/20">
+            <div className="text-center">
+              <p className="text-3xl md:text-4xl font-bold text-accent">2+</p>
               <p className="text-sm text-primary-foreground/70">Years Experience</p>
             </div>
           </div>
