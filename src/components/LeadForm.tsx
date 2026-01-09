@@ -22,14 +22,31 @@ const LeadForm = ({ selectedProduct, onClose }: LeadFormProps) => {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Format the WhatsApp message
+    const whatsappNumber = "919560288244";
+    const message = `*New Product Inquiry*
+    
+*Product:* ${selectedProduct}
+*Name:* ${formData.name}
+*Company:* ${formData.company}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Country:* ${formData.country}
+*Quantity:* ${formData.quantity || "Not specified"}
+*Additional Requirements:* ${formData.message || "None"}`;
 
-    toast.success("Inquiry submitted successfully! We'll contact you within 24 hours.");
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank");
+
+    toast.success("Redirecting to WhatsApp...");
     setIsSubmitting(false);
     onClose();
   };
