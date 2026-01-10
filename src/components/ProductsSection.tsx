@@ -4,19 +4,18 @@ import LeadForm from "./LeadForm";
 import greenBananaImg from "@/assets/green-banana.png";
 import onionImg from "@/assets/onion.png";
 import greenChilliImg from "@/assets/green-chilli.jpg";
+import custardAppleImg from "@/assets/custard-apple.png";
 
 const products = [
   { id: 1, name: "Green Banana", category: "Fruits", image: greenBananaImg },
   { id: 2, name: "Onion", category: "Vegetables", image: onionImg },
   { id: 3, name: "Green Chilli", category: "Vegetables", image: greenChilliImg },
   { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop" },
-  { id: 5, name: "Basmati Rice", category: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
-  { id: 6, name: "Wheat", category: "Grains", image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop" },
+  { id: 5, name: "Custard Apple", category: "Fruits", image: custardAppleImg },
+  { id: 6, name: "Basmati Rice", category: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
   { id: 7, name: "Yellow Corn", category: "Grains", image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=400&fit=crop" },
-  { id: 8, name: "Turmeric", category: "Spices", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&h=400&fit=crop" },
-  { id: 9, name: "Raw Sugar", category: "FMCG", image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=400&fit=crop" },
-  { id: 10, name: "Arabica Coffee", category: "Beverages", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=400&fit=crop" },
-  { id: 11, name: "Green Tea", category: "Beverages", image: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&h=400&fit=crop" },
+  { id: 8, name: "Honey", category: "FMCG", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop" },
+  { id: 9, name: "Arabica Coffee", category: "Beverages", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=400&fit=crop" },
 ];
 
 const ProductsSection = () => {
