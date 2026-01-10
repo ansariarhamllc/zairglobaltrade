@@ -5,8 +5,8 @@ import LeadForm from "./LeadForm";
 const products = [
   { id: 1, name: "Banana", category: "Fruits", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=400&fit=crop" },
   { id: 2, name: "Onion", category: "Vegetables", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&h=400&fit=crop" },
-  { id: 3, name: "Green Chilli", category: "Vegetables", image: "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=400&h=400&fit=crop" },
-  { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=400&h=400&fit=crop" },
+  { id: 3, name: "Green Chilli", category: "Vegetables", image: "https://images.unsplash.com/photo-1526346698789-22fd84314424?w=400&h=400&fit=crop" },
+  { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop" },
   { id: 5, name: "Basmati Rice", category: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
   { id: 6, name: "Wheat", category: "Grains", image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop" },
   { id: 7, name: "Yellow Corn", category: "Grains", image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=400&fit=crop" },
