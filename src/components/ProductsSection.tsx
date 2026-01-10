@@ -3,9 +3,9 @@ import ProductCard from "./ProductCard";
 import LeadForm from "./LeadForm";
 
 const products = [
-  { id: 1, name: "Green Banana", category: "Fruits", image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=400&fit=crop" },
-  { id: 2, name: "Onion", category: "Vegetables", image: "https://images.unsplash.com/photo-1508747703725-719777637510?w=400&h=400&fit=crop" },
-  { id: 3, name: "Green Chilli", category: "Vegetables", image: "https://images.unsplash.com/photo-1518688248740-7c31f1a945c4?w=400&h=400&fit=crop" },
+  { id: 1, name: "Green Banana", category: "Fruits", image: "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&h=400&fit=crop" },
+  { id: 2, name: "Onion", category: "Vegetables", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop" },
+  { id: 3, name: "Green Chilli", category: "Vegetables", image: "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&h=400&fit=crop" },
   { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop" },
   { id: 5, name: "Basmati Rice", category: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
   { id: 6, name: "Wheat", category: "Grains", image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop" },
