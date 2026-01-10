@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import LeadForm from "./LeadForm";
+import greenBananaImg from "@/assets/green-banana.png";
 
 const products = [
-  { id: 1, name: "Green Banana", category: "Fruits", image: "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&h=400&fit=crop" },
+  { id: 1, name: "Green Banana", category: "Fruits", image: greenBananaImg },
   { id: 2, name: "Onion", category: "Vegetables", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop" },
   { id: 3, name: "Green Chilli", category: "Vegetables", image: "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&h=400&fit=crop" },
   { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop" },
