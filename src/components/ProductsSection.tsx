@@ -5,6 +5,7 @@ import greenBananaImg from "@/assets/green-banana.png";
 import onionImg from "@/assets/onion.png";
 import greenChilliImg from "@/assets/green-chilli.jpg";
 import custardAppleImg from "@/assets/custard-apple.png";
+import grapesImg from "@/assets/grapes.png";
 
 const products = [
   { id: 1, name: "Green Banana", category: "Fruits", image: greenBananaImg },
@@ -16,6 +17,7 @@ const products = [
   { id: 7, name: "Yellow Corn", category: "Grains", image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=400&fit=crop" },
   { id: 8, name: "Honey", category: "FMCG", image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=400&fit=crop" },
   { id: 9, name: "Arabica Coffee", category: "Beverages", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=400&fit=crop" },
+  { id: 10, name: "Farm Fresh Grapes", category: "Fruits", image: grapesImg },
 ];
 
 const ProductsSection = () => {
