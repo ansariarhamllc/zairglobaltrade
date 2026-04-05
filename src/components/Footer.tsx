@@ -1,4 +1,5 @@
 import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,13 +8,13 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <Globe className="h-8 w-8" />
               <div>
                 <h3 className="text-xl font-bold">ZAIR GLOBAL TRADE</h3>
                 <p className="text-xs text-primary-foreground/70">Export & Import Excellence</p>
               </div>
-            </div>
+            </Link>
             <p className="text-primary-foreground/80 mb-6 max-w-md">
               Connecting premium agricultural commodities and FMCG products to markets worldwide. 
               Your reliable partner for international trade.
@@ -50,21 +51,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <button onClick={() => document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Home
-                </button>
-              </li>
-              <li>
-                <button onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Products
-                </button>
-              </li>
-              <li>
-                <button onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  About Us
-                </button>
-              </li>
+              <li><Link to="/" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">Home</Link></li>
+              <li><Link to="/commodities" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">Commodities</Link></li>
+              <li><Link to="/about" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">About Us</Link></li>
+              <li><Link to="/experience" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">Experience</Link></li>
             </ul>
           </div>
 
@@ -94,7 +84,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
           <p>© {new Date().getFullYear()} Zair Global Trade. All rights reserved.</p>
         </div>
