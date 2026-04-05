@@ -30,24 +30,24 @@ const ProductsSection = () => {
   };
 
   return (
-    <section id="products" className="py-20 bg-muted/30">
+    <section id="products" className="py-20 bg-section-warm">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="inline-block bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">
             Our Products
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Premium Agricultural Commodities
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-5">
+            Premium <span className="text-gradient">Agricultural</span> Commodities
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-lg leading-relaxed">
             Select any product below to request a competitive quote. We source the finest quality 
-            commodities directly from certified farms and suppliers worldwide.
+            commodities directly from certified Indian farms.
           </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* Products Grid - bigger cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {products.map((product) => (
             <ProductCard
               key={product.id}
@@ -61,15 +61,17 @@ const ProductsSection = () => {
         </div>
 
         {/* CTA */}
-        <p className="text-center text-muted-foreground mt-8">
-          Don't see what you're looking for?{" "}
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground mb-4">
+            Don't see what you're looking for?
+          </p>
           <button 
             onClick={() => handleProductSelect("Custom Product Inquiry")}
-            className="text-primary font-medium hover:underline"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover-lift transition-all shadow-lg"
           >
-            Contact us for custom sourcing
+            Contact Us for Custom Sourcing
           </button>
-        </p>
+        </div>
       </div>
 
       {/* Lead Form Modal */}
