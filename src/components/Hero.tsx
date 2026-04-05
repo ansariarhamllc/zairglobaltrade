@@ -1,17 +1,12 @@
 import { ArrowDown, Leaf, Ship, TrendingUp } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const scrollToProducts = () => {
-    document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-hero-gradient overflow-hidden">
-      {/* Background Pattern */}
       <div className="absolute inset-0 bg-hero-pattern opacity-10" />
       
-      {/* Floating Elements */}
       <div className="absolute top-20 left-10 animate-float">
         <Leaf className="h-12 w-12 text-accent/30" />
       </div>
@@ -36,15 +31,14 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" onClick={scrollToProducts}>
-              Explore Products
+            <Button variant="hero" size="lg" asChild>
+              <Link to="/commodities">Explore Products</Link>
             </Button>
-            <Button variant="heroOutline" size="lg" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}>
-              Learn More
+            <Button variant="heroOutline" size="lg" asChild>
+              <Link to="/about">Learn More</Link>
             </Button>
           </div>
 
-          {/* Stats */}
           <div className="flex justify-center mt-16 pt-8 border-t border-primary-foreground/20">
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-accent">2+</p>
@@ -53,7 +47,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <ArrowDown className="h-6 w-6 text-primary-foreground/50" />
         </div>
