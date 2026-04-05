@@ -3,30 +3,34 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className="bg-primary text-primary-foreground relative overflow-hidden">
+      {/* Decorative */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 py-16 relative z-10">
+        <div className="grid md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <Globe className="h-8 w-8" />
+            <Link to="/" className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center">
+                <Globe className="h-5 w-5 text-accent-foreground" />
+              </div>
               <div>
-                <h3 className="text-xl font-bold">ZAIR GLOBAL TRADE</h3>
-                <p className="text-xs text-primary-foreground/70">Export & Import Excellence</p>
+                <h3 className="text-xl font-black">ZAIR GLOBAL TRADE</h3>
+                <p className="text-[10px] text-primary-foreground/60 uppercase tracking-widest">Export & Import Excellence</p>
               </div>
             </Link>
-            <p className="text-primary-foreground/80 mb-6 max-w-md">
-              Connecting premium agricultural commodities and FMCG products to markets worldwide. 
-              Your reliable partner for international trade.
+            <p className="text-primary-foreground/70 mb-6 max-w-md leading-relaxed">
+              Connecting premium Indian agricultural commodities and FMCG products to markets worldwide. 
+              Your reliable partner for international trade with 2+ years of trust.
             </p>
             
-            {/* Social Media Links */}
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <a
                 href="https://wa.me/919560288244"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                className="w-11 h-11 rounded-xl bg-primary-foreground/10 hover:bg-accent/20 flex items-center justify-center transition-all hover-lift"
                 aria-label="WhatsApp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -37,7 +41,7 @@ const Footer = () => {
                 href="https://instagram.com/zairglobaltrade"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                className="w-11 h-11 rounded-xl bg-primary-foreground/10 hover:bg-accent/20 flex items-center justify-center transition-all hover-lift"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -49,34 +53,34 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">Home</Link></li>
-              <li><Link to="/commodities" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">Commodities</Link></li>
-              <li><Link to="/about" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">About Us</Link></li>
-              <li><Link to="/experience" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">Experience</Link></li>
+            <h4 className="font-bold mb-5 text-accent">Quick Links</h4>
+            <ul className="space-y-3">
+              <li><Link to="/" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Home</Link></li>
+              <li><Link to="/commodities" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Commodities</Link></li>
+              <li><Link to="/about" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">About Us</Link></li>
+              <li><Link to="/experience" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Experience</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-3">
+            <h4 className="font-bold mb-5 text-accent">Contact Us</h4>
+            <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/70 text-sm">
+                <MapPin className="h-4 w-4 flex-shrink-0 mt-1 text-accent" />
+                <span className="text-primary-foreground/60 text-sm">
                   Sr.42 Appartment.9, Nayaislampura, Malegaon 423203, India
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 flex-shrink-0" />
-                <a href="tel:+919560288244" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
+                <Phone className="h-4 w-4 flex-shrink-0 text-accent" />
+                <a href="tel:+919560288244" className="text-primary-foreground/60 hover:text-accent text-sm transition-colors">
                   +91 9560288244
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 flex-shrink-0" />
-                <a href="mailto:zairglobaltrade@gmail.com" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
+                <Mail className="h-4 w-4 flex-shrink-0 text-accent" />
+                <a href="mailto:zairglobaltrade@gmail.com" className="text-primary-foreground/60 hover:text-accent text-sm transition-colors">
                   zairglobaltrade@gmail.com
                 </a>
               </li>
@@ -84,7 +88,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
+        <div className="mt-14 pt-8 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/40">
           <p>© {new Date().getFullYear()} Zair Global Trade. All rights reserved.</p>
         </div>
       </div>
