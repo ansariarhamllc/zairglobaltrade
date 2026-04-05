@@ -56,8 +56,8 @@ const LeadForm = ({ selectedProduct, onClose }: LeadFormProps) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-card rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/60 backdrop-blur-md animate-in fade-in duration-300">
+      <div className="bg-card rounded-2xl shadow-3d w-full max-w-lg max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-300">
         {/* Header */}
         <div className="sticky top-0 bg-card border-b border-border px-6 py-4 flex items-center justify-between rounded-t-2xl">
           <div>
