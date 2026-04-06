@@ -1,55 +1,41 @@
-import { ArrowRight, Leaf, Ship, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import heroBanner from "@/assets/hero-banner.jpg";
+import zgtLogo from "@/assets/zgt-logo.png";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-hero-gradient overflow-hidden">
-      <div className="absolute inset-0 bg-hero-pattern opacity-10" />
-
-      {/* Animated orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/8 rounded-full blur-3xl"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <img
+        src={heroBanner}
+        alt="Golden wheat fields"
+        className="absolute inset-0 w-full h-full object-cover"
+        width={1920}
+        height={1080}
       />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-accent/5 rounded-full blur-3xl"
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Floating decorations */}
-      <motion.div
-        className="absolute top-20 left-10"
-        animate={{ y: [-10, 10, -10], rotate: [0, 5, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Leaf className="h-12 w-12 text-accent/30" />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-32 right-20"
-        animate={{ y: [10, -15, 10], rotate: [0, -3, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      >
-        <Ship className="h-16 w-16 text-accent/20" />
-      </motion.div>
-      <motion.div
-        className="absolute top-40 right-32"
-        animate={{ y: [-5, 12, -5], scale: [1, 1.1, 1] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      >
-        <Sparkles className="h-8 w-8 text-accent/20" />
-      </motion.div>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
       <div className="container mx-auto px-4 pt-20 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
+          {/* Logo in circle */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto mb-8 w-28 h-28 md:w-36 md:h-36 rounded-full bg-white/95 shadow-2xl flex items-center justify-center border-4 border-accent/40"
+          >
+            <img src={zgtLogo} alt="ZGT Logo" className="w-20 h-20 md:w-28 md:h-28 object-contain" />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-accent/20"
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-accent/30"
           >
             <TrendingUp className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-accent tracking-wide">Trusted Global Trading Partner</span>
@@ -58,8 +44,8 @@ const Hero = () => {
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground mb-8 leading-[1.1] tracking-tight"
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tight"
           >
             Connecting{" "}
             <span className="relative inline-block">
@@ -89,8 +75,8 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-lg md:text-xl text-primary-foreground/75 mb-10 max-w-2xl mx-auto leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
             Premium quality agricultural commodities and FMCG products sourced from India,
             delivered globally with trust, quality, and commitment.
@@ -99,7 +85,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button variant="hero" size="lg" asChild className="text-base px-8 py-6 animate-pulse-glow rounded-xl">
@@ -118,7 +104,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-primary-foreground/15 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-white/20 max-w-2xl mx-auto"
           >
             {[
               { val: "2+", label: "Years Experience" },
@@ -133,7 +119,7 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
               >
                 <p className="text-4xl md:text-5xl font-black text-accent">{s.val}</p>
-                <p className="text-sm text-primary-foreground/60 mt-1">{s.label}</p>
+                <p className="text-sm text-white/60 mt-1">{s.label}</p>
               </motion.div>
             ))}
           </motion.div>
