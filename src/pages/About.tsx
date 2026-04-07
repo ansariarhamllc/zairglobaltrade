@@ -4,6 +4,10 @@ import PageTransition from "@/components/PageTransition";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Award, Globe2, Handshake, Shield, Target, Users, Leaf, Heart, Truck } from "lucide-react";
 import { motion } from "framer-motion";
+import WheatStalk from "@/components/illustrations/WheatStalk";
+import LeafPattern from "@/components/illustrations/LeafPattern";
+import DottedArc from "@/components/illustrations/DottedArc";
+import OrganicBlob from "@/components/illustrations/OrganicBlob";
 
 const features = [
   { icon: Globe2, title: "Global Network", description: "Established trade connections across multiple countries and continents, bridging Indian farms to world markets." },
@@ -28,6 +32,8 @@ const About = () => {
           {/* Hero */}
           <section className="py-20 bg-hero-gradient text-primary-foreground relative overflow-hidden">
             <div className="absolute inset-0 bg-hero-pattern opacity-5" />
+            <WheatStalk className="absolute left-2 top-10 w-16 opacity-20" delay={0.3} />
+            <WheatStalk className="absolute right-2 bottom-0 w-14 opacity-15" delay={0.6} flip />
             <motion.div
               className="absolute bottom-0 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
               animate={{ scale: [1, 1.2, 1] }}
@@ -62,8 +68,11 @@ const About = () => {
           </section>
 
           {/* Story Section */}
-          <section className="py-20 bg-section-warm">
-            <div className="container mx-auto px-4">
+          <section className="py-20 bg-section-warm relative overflow-hidden">
+            <LeafPattern className="absolute right-0 top-10 w-28 opacity-40" delay={0.5} />
+            <OrganicBlob className="absolute -left-16 bottom-0 w-64 opacity-20" delay={0.3} />
+            <DottedArc className="absolute bottom-20 left-1/4 w-80 opacity-20 pointer-events-none" delay={1} />
+            <div className="container mx-auto px-4 relative z-10">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <ScrollReveal direction="left">
                   <div>
@@ -114,8 +123,11 @@ const About = () => {
           </section>
 
           {/* Features Grid */}
-          <section className="py-20 bg-background">
-            <div className="container mx-auto px-4">
+          <section className="py-20 bg-background relative overflow-hidden">
+            <WheatStalk className="absolute left-0 top-20 w-16 opacity-30" delay={0.2} />
+            <WheatStalk className="absolute right-0 bottom-10 w-14 opacity-25" delay={0.4} flip />
+            <OrganicBlob className="absolute right-0 top-0 w-80 opacity-15 pointer-events-none" delay={0.6} color="hsl(25 45% 25% / 0.04)" />
+            <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
                   <span className="inline-block bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">What We Offer</span>
@@ -144,8 +156,10 @@ const About = () => {
           </section>
 
           {/* Values */}
-          <section className="py-20 bg-section-cream">
-            <div className="container mx-auto px-4">
+          <section className="py-20 bg-section-cream relative overflow-hidden">
+            <LeafPattern className="absolute left-4 top-10 w-24 opacity-35" delay={0.3} />
+            <DottedArc className="absolute right-0 bottom-10 w-72 opacity-20 pointer-events-none" delay={0.8} />
+            <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
                   <span className="inline-block bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">Our Values</span>
@@ -176,8 +190,10 @@ const About = () => {
           </section>
 
           {/* Recent Exports */}
-          <section className="py-20 bg-background">
-            <div className="container mx-auto px-4">
+          <section className="py-20 bg-background relative overflow-hidden">
+            <OrganicBlob className="absolute -left-20 top-10 w-60 opacity-15 pointer-events-none" delay={0.4} />
+            <WheatStalk className="absolute right-0 bottom-0 w-12 opacity-20" delay={0.6} flip />
+            <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
                   <span className="inline-block bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">Track Record</span>

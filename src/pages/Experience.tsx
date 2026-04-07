@@ -5,6 +5,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Award, Calendar, Globe2, TrendingUp, Users, Truck, Ship, Package, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import WheatStalk from "@/components/illustrations/WheatStalk";
+import LeafPattern from "@/components/illustrations/LeafPattern";
+import DottedArc from "@/components/illustrations/DottedArc";
+import OrganicBlob from "@/components/illustrations/OrganicBlob";
 
 const milestones = [
   { year: "2023", title: "Company Founded", description: "Zair Global Trade was established in Malegaon, Maharashtra, with a vision to connect Indian agriculture to the world.", icon: Calendar },
@@ -39,6 +43,8 @@ const Experience = () => {
           {/* Hero */}
           <section className="py-24 bg-hero-gradient text-primary-foreground relative overflow-hidden">
             <div className="absolute inset-0 bg-hero-pattern opacity-5" />
+            <WheatStalk className="absolute left-2 top-10 w-16 opacity-20" delay={0.3} />
+            <WheatStalk className="absolute right-2 bottom-0 w-14 opacity-15" delay={0.5} flip />
             <motion.div
               className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/10 rounded-full blur-3xl"
               animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -73,7 +79,8 @@ const Experience = () => {
           </section>
 
           {/* Stats */}
-          <section className="py-16 bg-background relative">
+          <section className="py-16 bg-background relative overflow-hidden">
+            <DottedArc className="absolute top-0 left-0 w-full opacity-10 pointer-events-none" delay={0.5} />
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 -mt-20 relative z-10">
                 {stats.map((stat, i) => (
@@ -95,8 +102,11 @@ const Experience = () => {
           </section>
 
           {/* Timeline */}
-          <section className="py-20 bg-section-cream">
-            <div className="container mx-auto px-4">
+          <section className="py-20 bg-section-cream relative overflow-hidden">
+            <LeafPattern className="absolute right-0 top-20 w-28 opacity-30" delay={0.4} />
+            <OrganicBlob className="absolute -left-16 bottom-20 w-60 opacity-15 pointer-events-none" delay={0.6} />
+            <WheatStalk className="absolute left-4 bottom-0 w-12 opacity-25" delay={0.8} />
+            <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
                   <span className="inline-block bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">Milestones</span>
@@ -134,8 +144,9 @@ const Experience = () => {
           </section>
 
           {/* Recent Exports */}
-          <section className="py-20 bg-background">
-            <div className="container mx-auto px-4">
+          <section className="py-20 bg-background relative overflow-hidden">
+            <OrganicBlob className="absolute -right-20 top-10 w-72 opacity-15 pointer-events-none" delay={0.3} color="hsl(25 45% 25% / 0.04)" />
+            <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
                   <span className="inline-block bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">Export History</span>
@@ -175,6 +186,8 @@ const Experience = () => {
           <ScrollReveal direction="scale">
             <section className="py-20 bg-hero-gradient text-primary-foreground relative overflow-hidden">
               <div className="absolute inset-0 bg-hero-pattern opacity-5" />
+              <WheatStalk className="absolute left-4 top-0 w-14 opacity-15" delay={0.2} />
+              <LeafPattern className="absolute right-4 bottom-0 w-20 opacity-15" delay={0.4} />
               <div className="container mx-auto px-4 relative z-10 text-center">
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Trade With Us?</h2>
                 <p className="text-primary-foreground/70 text-lg mb-8 max-w-xl mx-auto">Browse our premium product range and get a competitive quote today.</p>

@@ -5,6 +5,9 @@ import PageTransition from "@/components/PageTransition";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Truck, Shield, Clock, Globe2 } from "lucide-react";
 import { motion } from "framer-motion";
+import WheatStalk from "@/components/illustrations/WheatStalk";
+import OrganicBlob from "@/components/illustrations/OrganicBlob";
+import DottedArc from "@/components/illustrations/DottedArc";
 
 const features = [
   { icon: Truck, title: "Fast Shipping", desc: "Global logistics in 7-15 days" },
@@ -21,6 +24,8 @@ const Commodities = () => {
         <div className="pt-20">
           <section className="py-16 bg-hero-gradient text-primary-foreground relative overflow-hidden">
             <div className="absolute inset-0 bg-hero-pattern opacity-5" />
+            <WheatStalk className="absolute left-2 top-0 w-14 opacity-20" delay={0.3} />
+            <WheatStalk className="absolute right-2 top-4 w-12 opacity-15" delay={0.5} flip />
             <motion.div
               className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
               animate={{ scale: [1, 1.3, 1] }}
@@ -46,8 +51,9 @@ const Commodities = () => {
             </div>
           </section>
 
-          <section className="py-6 bg-accent/10 border-y border-accent/20">
-            <div className="container mx-auto px-4">
+          <section className="py-6 bg-accent/10 border-y border-accent/20 relative overflow-hidden">
+            <DottedArc className="absolute inset-0 w-full h-full opacity-15 pointer-events-none" />
+            <div className="container mx-auto px-4 relative z-10">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {features.map((f, i) => (
                   <ScrollReveal key={i} delay={i * 0.08} direction="scale">
@@ -64,7 +70,11 @@ const Commodities = () => {
             </div>
           </section>
 
-          <ProductsSection />
+          <div className="relative">
+            <OrganicBlob className="absolute -right-20 top-20 w-72 opacity-20 pointer-events-none" delay={0.5} />
+            <OrganicBlob className="absolute -left-20 bottom-40 w-60 opacity-15 pointer-events-none" delay={1} color="hsl(25 45% 25% / 0.05)" />
+            <ProductsSection />
+          </div>
         </div>
         <Footer />
       </div>

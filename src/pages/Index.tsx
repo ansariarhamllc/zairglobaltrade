@@ -6,6 +6,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
 import { ArrowRight, Truck, ShieldCheck, Leaf } from "lucide-react";
 import { motion } from "framer-motion";
+import WheatStalk from "@/components/illustrations/WheatStalk";
+import LeafPattern from "@/components/illustrations/LeafPattern";
+import DottedArc from "@/components/illustrations/DottedArc";
+import OrganicBlob from "@/components/illustrations/OrganicBlob";
 
 const Index = () => {
   return (
@@ -15,8 +19,15 @@ const Index = () => {
         <Hero />
 
         {/* Why Choose Us */}
-        <section className="py-20 bg-section-warm">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-section-warm relative overflow-hidden">
+          {/* Illustration decorations */}
+          <WheatStalk className="absolute left-0 top-10 w-16 md:w-20 opacity-60" delay={0.3} />
+          <WheatStalk className="absolute right-0 top-20 w-14 md:w-18 opacity-40" delay={0.6} flip />
+          <LeafPattern className="absolute right-10 bottom-10 w-24 md:w-32 opacity-50" delay={0.8} />
+          <OrganicBlob className="absolute -left-20 bottom-0 w-60 md:w-80 opacity-30" delay={0.2} />
+          <DottedArc className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] opacity-30 pointer-events-none" delay={1} />
+
+          <div className="container mx-auto px-4 relative z-10">
             <ScrollReveal>
               <div className="text-center mb-12">
                 <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
@@ -54,8 +65,10 @@ const Index = () => {
 
         {/* Recent Exports Banner */}
         <ScrollReveal>
-          <section className="py-16 bg-hero-gradient text-primary-foreground">
-            <div className="container mx-auto px-4">
+          <section className="py-16 bg-hero-gradient text-primary-foreground relative overflow-hidden">
+            <WheatStalk className="absolute right-4 top-0 w-12 opacity-30" delay={0.2} flip />
+            <LeafPattern className="absolute left-4 bottom-0 w-20 opacity-20" delay={0.5} />
+            <div className="container mx-auto px-4 relative z-10">
               <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold mb-3">Recent Exports Delivered Successfully</h2>
