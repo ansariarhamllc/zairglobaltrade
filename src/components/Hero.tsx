@@ -1,9 +1,15 @@
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp, Leaf, Globe, Package } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import heroBanner from "@/assets/hero-banner.jpg";
-import zgtLogo from "@/assets/zgt-logo.png";
+
+const floatingItems = [
+  { icon: Leaf, x: "10%", y: "20%", delay: 0, size: 32 },
+  { icon: Globe, x: "85%", y: "30%", delay: 0.5, size: 28 },
+  { icon: Package, x: "75%", y: "70%", delay: 1, size: 24 },
+  { icon: Leaf, x: "15%", y: "75%", delay: 1.5, size: 20 },
+];
 
 const Hero = () => {
   return (
@@ -16,21 +22,69 @@ const Hero = () => {
         width={1920}
         height={1080}
       />
-      {/* Dark overlay for text readability */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+
+      {/* 3D Floating icons */}
+      {floatingItems.map((item, i) => (
+        <motion.div
+          key={i}
+          className="absolute z-10 text-accent/40"
+          style={{ left: item.x, top: item.y }}
+          animate={{
+            y: [0, -20, 0],
+            rotateY: [0, 360],
+            rotateX: [0, 15, 0],
+          }}
+          transition={{
+            duration: 6,
+            delay: item.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <item.icon size={item.size} />
+        </motion.div>
+      ))}
+
+      {/* 3D rotating globe/sphere effect */}
+      <motion.div
+        className="absolute z-[1] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent/10"
+        style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute z-[1] w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full border border-accent/5"
+        style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
+        animate={{ rotate: -360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* 3D perspective cards floating */}
+      <motion.div
+        className="absolute z-[2] top-[15%] left-[5%] md:left-[10%] w-20 h-14 md:w-28 md:h-20 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+        style={{ transformStyle: "preserve-3d" }}
+        animate={{
+          y: [0, -15, 0],
+          rotateX: [0, 10, 0],
+          rotateY: [-15, 15, -15],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute z-[2] bottom-[20%] right-[5%] md:right-[12%] w-24 h-16 md:w-32 md:h-22 rounded-xl bg-accent/10 backdrop-blur-sm border border-accent/20 shadow-2xl"
+        style={{ transformStyle: "preserve-3d" }}
+        animate={{
+          y: [0, 20, 0],
+          rotateX: [5, -5, 5],
+          rotateY: [10, -10, 10],
+        }}
+        transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="container mx-auto px-4 pt-20 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Logo in circle */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mb-8 w-28 h-28 md:w-36 md:h-36 rounded-full bg-white/95 shadow-2xl flex items-center justify-center border-4 border-accent/40"
-          >
-            <img src={zgtLogo} alt="ZGT Logo" className="w-20 h-20 md:w-28 md:h-28 object-contain" />
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -108,7 +162,7 @@ const Hero = () => {
           >
             {[
               { val: "2+", label: "Years Experience" },
-              { val: "10+", label: "Products" },
+              { val: "12+", label: "Products" },
               { val: "50+", label: "Happy Clients" },
             ].map((s, i) => (
               <motion.div
