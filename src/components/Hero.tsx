@@ -1,53 +1,159 @@
-import { ArrowRight, TrendingUp, Leaf, Globe, Package } from "lucide-react";
+import { ArrowRight, TrendingUp, Leaf, Globe, Package, Sparkles, Star, Gem } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, animate } from "framer-motion";
+import { useRef, useState, useCallback } from "react";
 import heroBanner from "@/assets/hero-banner.jpg";
 
-const floatingItems = [
+interface FallingItem {
+  icon: React.ElementType;
+  x: string;
+  y: string;
+  delay: number;
+  size: number;
+}
+
+const floatingItems: FallingItem[] = [
   { icon: Leaf, x: "10%", y: "20%", delay: 0, size: 32 },
   { icon: Globe, x: "85%", y: "30%", delay: 0.5, size: 28 },
   { icon: Package, x: "75%", y: "70%", delay: 1, size: 24 },
   { icon: Leaf, x: "15%", y: "75%", delay: 1.5, size: 20 },
+  { icon: Sparkles, x: "50%", y: "15%", delay: 0.3, size: 22 },
+  { icon: Star, x: "90%", y: "60%", delay: 0.8, size: 18 },
+  { icon: Gem, x: "25%", y: "45%", delay: 1.2, size: 26 },
 ];
 
-const Hero = () => {
-  return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <img
-        src={heroBanner}
-        alt="Golden wheat fields"
-        className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+const ClickableFloatingIcon = ({ item, index }: { item: FallingItem; index: number }) => {
+  const [fallen, setFallen] = useState(false);
 
-      {/* 3D Floating icons */}
+  const handleClick = useCallback(() => {
+    if (fallen) return;
+    setFallen(true);
+    setTimeout(() => setFallen(false), 2500);
+  }, [fallen]);
+
+  return (
+    <motion.div
+      key={index}
+      className="absolute z-10 text-accent/40 cursor-pointer select-none"
+      style={{ left: item.x, top: item.y }}
+      animate={
+        fallen
+          ? {
+              y: [0, -30, 800],
+              rotate: [0, -20, 180],
+              opacity: [1, 1, 0],
+              scale: [1, 1.3, 0.5],
+            }
+          : {
+              y: [0, -20, 0],
+              rotateY: [0, 360],
+              rotateX: [0, 15, 0],
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+            }
+      }
+      transition={
+        fallen
+          ? { duration: 1.2, ease: [0.55, 0, 1, 0.45] }
+          : { duration: 6, delay: item.delay, repeat: Infinity, ease: "easeInOut" }
+      }
+      onClick={handleClick}
+      whileHover={{ scale: 1.4, color: "hsl(38 70% 50%)" }}
+      whileTap={{ scale: 0.8 }}
+    >
+      <item.icon size={item.size} />
+    </motion.div>
+  );
+};
+
+const ClickableGlassCard = ({
+  className,
+  animateProps,
+  transitionProps,
+}: {
+  className: string;
+  animateProps: Record<string, any>;
+  transitionProps: Record<string, any>;
+}) => {
+  const [fallen, setFallen] = useState(false);
+
+  const handleClick = useCallback(() => {
+    if (fallen) return;
+    setFallen(true);
+    setTimeout(() => setFallen(false), 3000);
+  }, [fallen]);
+
+  return (
+    <motion.div
+      className={`${className} cursor-pointer`}
+      style={{ transformStyle: "preserve-3d" }}
+      animate={
+        fallen
+          ? {
+              y: [0, -40, 900],
+              rotate: [0, 30, -60, 200],
+              opacity: [1, 1, 0],
+              scale: [1, 1.1, 0.3],
+            }
+          : animateProps
+      }
+      transition={
+        fallen
+          ? { duration: 1.5, ease: [0.55, 0, 1, 0.45] }
+          : transitionProps
+      }
+      onClick={handleClick}
+      whileHover={{ scale: 1.1 }}
+    />
+  );
+};
+
+const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.8]);
+
+  return (
+    <section
+      id="home"
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Parallax horizontal-scroll background */}
+      <motion.div
+        className="absolute inset-0 w-[120%] h-full"
+        style={{ x: bgX, scale: bgScale }}
+      >
+        <img
+          src={heroBanner}
+          alt="Golden wheat fields"
+          className="w-full h-full object-cover"
+          width={1920}
+          height={1080}
+        />
+      </motion.div>
+
+      {/* Dynamic overlay */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
+        style={{ opacity: overlayOpacity }}
+      />
+
+      {/* Clickable floating icons */}
       {floatingItems.map((item, i) => (
-        <motion.div
-          key={i}
-          className="absolute z-10 text-accent/40"
-          style={{ left: item.x, top: item.y }}
-          animate={{
-            y: [0, -20, 0],
-            rotateY: [0, 360],
-            rotateX: [0, 15, 0],
-          }}
-          transition={{
-            duration: 6,
-            delay: item.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <item.icon size={item.size} />
-        </motion.div>
+        <ClickableFloatingIcon key={i} item={item} index={i} />
       ))}
 
-      {/* 3D rotating globe/sphere effect */}
+      {/* Rotating orbital rings */}
       <motion.div
         className="absolute z-[1] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent/10"
         style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
@@ -61,29 +167,40 @@ const Hero = () => {
         transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* 3D perspective cards floating */}
-      <motion.div
+      {/* Clickable 3D glass cards */}
+      <ClickableGlassCard
         className="absolute z-[2] top-[15%] left-[5%] md:left-[10%] w-20 h-14 md:w-28 md:h-20 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
-        style={{ transformStyle: "preserve-3d" }}
-        animate={{
+        animateProps={{
           y: [0, -15, 0],
           rotateX: [0, 10, 0],
           rotateY: [-15, 15, -15],
         }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        transitionProps={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <ClickableGlassCard
         className="absolute z-[2] bottom-[20%] right-[5%] md:right-[12%] w-24 h-16 md:w-32 md:h-22 rounded-xl bg-accent/10 backdrop-blur-sm border border-accent/20 shadow-2xl"
-        style={{ transformStyle: "preserve-3d" }}
-        animate={{
+        animateProps={{
           y: [0, 20, 0],
           rotateX: [5, -5, 5],
           rotateY: [10, -10, 10],
         }}
-        transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+        transitionProps={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <ClickableGlassCard
+        className="absolute z-[2] top-[55%] left-[3%] md:left-[8%] w-16 h-12 md:w-24 md:h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl"
+        animateProps={{
+          y: [0, 12, 0],
+          rotateX: [-5, 8, -5],
+          rotateY: [5, -12, 5],
+        }}
+        transitionProps={{ duration: 9, delay: 2, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container mx-auto px-4 pt-20 relative z-10">
+      {/* Content with parallax */}
+      <motion.div
+        className="container mx-auto px-4 pt-20 relative z-10"
+        style={{ y: contentY }}
+      >
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -92,7 +209,9 @@ const Hero = () => {
             className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-accent/30"
           >
             <TrendingUp className="h-4 w-4 text-accent" />
-            <span className="text-sm font-medium text-accent tracking-wide">Trusted Global Trading Partner</span>
+            <span className="text-sm font-medium text-accent tracking-wide">
+              Trusted Global Trading Partner
+            </span>
           </motion.div>
 
           <motion.h1
@@ -123,7 +242,8 @@ const Hero = () => {
                 />
               </motion.svg>
             </span>
-            <br />to the World
+            <br />
+            to the World
           </motion.h1>
 
           <motion.p
@@ -178,7 +298,7 @@ const Hero = () => {
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
