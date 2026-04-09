@@ -162,7 +162,7 @@ const Hero = () => {
 
       {/* Clickable 3D glass cards */}
       <ClickableGlassCard
-        className="absolute z-[2] top-[15%] left-[5%] md:left-[10%] w-20 h-14 md:w-28 md:h-20 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+        className="absolute z-[2] top-[15%] left-[5%] md:left-[10%] w-20 h-14 md:w-28 md:h-20 rounded-xl bg-white/15 border border-white/20 shadow-2xl"
         animateProps={{
           y: [0, -15, 0],
           rotateX: [0, 10, 0],
@@ -171,7 +171,7 @@ const Hero = () => {
         transitionProps={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <ClickableGlassCard
-        className="absolute z-[2] bottom-[20%] right-[5%] md:right-[12%] w-24 h-16 md:w-32 md:h-22 rounded-xl bg-accent/10 backdrop-blur-sm border border-accent/20 shadow-2xl"
+        className="absolute z-[2] bottom-[20%] right-[5%] md:right-[12%] w-24 h-16 md:w-32 md:h-22 rounded-xl bg-accent/15 border border-accent/20 shadow-2xl"
         animateProps={{
           y: [0, 20, 0],
           rotateX: [5, -5, 5],
@@ -180,7 +180,7 @@ const Hero = () => {
         transitionProps={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
       />
       <ClickableGlassCard
-        className="absolute z-[2] top-[55%] left-[3%] md:left-[8%] w-16 h-12 md:w-24 md:h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl"
+        className="absolute z-[2] top-[55%] left-[3%] md:left-[8%] w-16 h-12 md:w-24 md:h-16 rounded-xl bg-white/10 border border-white/10 shadow-xl"
         animateProps={{
           y: [0, 12, 0],
           rotateX: [-5, 8, -5],
@@ -199,7 +199,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-accent/30"
+            className="inline-flex items-center gap-2 bg-accent/25 rounded-full px-5 py-2.5 mb-8 border border-accent/30"
           >
             <TrendingUp className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-accent tracking-wide">
