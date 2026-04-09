@@ -191,7 +191,7 @@ const Hero = () => {
 
       {/* Content with parallax */}
       <motion.div
-        className="container mx-auto px-4 pt-20 relative z-10"
+        className="container mx-auto px-4 pt-20 relative z-10 will-change-transform"
         style={{ y: contentY }}
       >
         <div className="max-w-5xl mx-auto text-center">
