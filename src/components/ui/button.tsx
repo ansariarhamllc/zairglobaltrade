@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 transition-all duration-300 ease-out",
   {
     variants: {
       variant: {
@@ -39,9 +38,49 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, style, onMouseMove, onMouseLeave, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+    const innerRef = React.useRef<HTMLButtonElement>(null);
+    const combinedRef = (node: HTMLButtonElement) => {
+      (innerRef as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+      if (typeof ref === "function") ref(node);
+      else if (ref) (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+    };
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+      const el = innerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const midX = rect.width / 2;
+      const midY = rect.height / 2;
+      const rotateY = ((x - midX) / midX) * 12;
+      const rotateX = ((midY - y) / midY) * 8;
+      el.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
+      el.style.boxShadow = `${-rotateY * 0.5}px ${rotateX * 0.5}px 20px hsl(var(--accent) / 0.25)`;
+      onMouseMove?.(e);
+    };
+
+    const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+      const el = innerRef.current;
+      if (el) {
+        el.style.transform = "";
+        el.style.boxShadow = "";
+      }
+      onMouseLeave?.(e);
+    };
+
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={combinedRef}
+        style={{ ...style, transformStyle: "preserve-3d" as const, willChange: "transform" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        {...props}
+      />
+    );
   },
 );
 Button.displayName = "Button";
