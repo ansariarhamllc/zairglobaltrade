@@ -149,10 +149,9 @@
     transform: perspective(1200px) rotateX(2deg) rotateY(-3deg) translateZ(10px) translateY(-8px);
   }
 
-  /* ---- Glass ---- */
+  /* ---- Glass (no backdrop-blur for perf) ---- */
   .glass-card {
-    background: hsl(35 25% 99% / 0.75);
-    backdrop-filter: blur(24px) saturate(1.2);
+    background: hsl(35 25% 97% / 0.92);
     border: 1px solid hsl(35 25% 85% / 0.5);
   }
 

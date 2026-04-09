@@ -118,10 +118,8 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.8]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
     <section
@@ -129,43 +127,37 @@ const Hero = () => {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax horizontal-scroll background */}
+      {/* Parallax background */}
       <motion.div
-        className="absolute inset-0 w-[120%] h-full"
-        style={{ x: bgX, scale: bgScale }}
+        className="absolute inset-0 will-change-transform"
+        style={{ y: bgY }}
       >
         <img
           src={heroBanner}
           alt="Golden wheat fields"
-          className="w-full h-full object-cover"
+          className="w-full h-[120%] object-cover"
           width={1920}
           height={1080}
+          loading="eager"
         />
       </motion.div>
 
-      {/* Dynamic overlay */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
-        style={{ opacity: overlayOpacity }}
-      />
+      {/* Static overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/65" />
 
       {/* Clickable floating icons */}
       {floatingItems.map((item, i) => (
         <ClickableFloatingIcon key={i} item={item} index={i} />
       ))}
 
-      {/* Rotating orbital rings */}
-      <motion.div
-        className="absolute z-[1] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent/10"
-        style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      {/* Orbital rings - CSS animation for better perf */}
+      <div
+        className="absolute z-[1] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent/10 animate-[spin_60s_linear_infinite]"
+        style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
       />
-      <motion.div
-        className="absolute z-[1] w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full border border-accent/5"
-        style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+      <div
+        className="absolute z-[1] w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full border border-accent/5 animate-[spin_45s_linear_infinite_reverse]"
+        style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
       />
 
       {/* Clickable 3D glass cards */}

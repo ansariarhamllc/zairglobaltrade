@@ -15,7 +15,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 border-b border-border/50 shadow-sm" style={{ willChange: 'auto' }}>
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:shadow-lg transition-shadow">
