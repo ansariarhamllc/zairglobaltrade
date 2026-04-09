@@ -263,12 +263,38 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button variant="hero" size="lg" asChild className="text-base px-8 py-6 animate-pulse-glow rounded-xl">
-              <Link to="/commodities">
-                Explore Our Products
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <motion.div
+              className="relative group"
+              style={{ perspective: 800 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.div
+                className="relative"
+                whileHover={{ rotateX: -8, rotateY: 5, z: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <Button variant="hero" size="lg" asChild className="text-base px-8 py-6 animate-pulse-glow rounded-xl relative overflow-hidden">
+                  <Link to="/commodities">
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                    />
+                    Explore Our Products
+                    <motion.span
+                      className="inline-block ml-2"
+                      whileHover={{ x: 5, scale: 1.2 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <ArrowRight className="h-5 w-5" />
+                    </motion.span>
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
             <Button variant="heroOutline" size="lg" asChild className="text-base px-8 py-6 rounded-xl">
               <Link to="/about">Learn About Us</Link>
             </Button>
