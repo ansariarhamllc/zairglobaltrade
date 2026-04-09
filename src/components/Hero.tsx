@@ -118,10 +118,8 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.8]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
     <section
@@ -129,48 +127,42 @@ const Hero = () => {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax horizontal-scroll background */}
+      {/* Parallax background */}
       <motion.div
-        className="absolute inset-0 w-[120%] h-full"
-        style={{ x: bgX, scale: bgScale }}
+        className="absolute inset-0 will-change-transform"
+        style={{ y: bgY }}
       >
         <img
           src={heroBanner}
           alt="Golden wheat fields"
-          className="w-full h-full object-cover"
+          className="w-full h-[120%] object-cover"
           width={1920}
           height={1080}
+          loading="eager"
         />
       </motion.div>
 
-      {/* Dynamic overlay */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
-        style={{ opacity: overlayOpacity }}
-      />
+      {/* Static overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/65" />
 
       {/* Clickable floating icons */}
       {floatingItems.map((item, i) => (
         <ClickableFloatingIcon key={i} item={item} index={i} />
       ))}
 
-      {/* Rotating orbital rings */}
-      <motion.div
-        className="absolute z-[1] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent/10"
-        style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      {/* Orbital rings - CSS animation for better perf */}
+      <div
+        className="absolute z-[1] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent/10 animate-[spin_60s_linear_infinite]"
+        style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
       />
-      <motion.div
-        className="absolute z-[1] w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full border border-accent/5"
-        style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+      <div
+        className="absolute z-[1] w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full border border-accent/5 animate-[spin_45s_linear_infinite_reverse]"
+        style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
       />
 
       {/* Clickable 3D glass cards */}
       <ClickableGlassCard
-        className="absolute z-[2] top-[15%] left-[5%] md:left-[10%] w-20 h-14 md:w-28 md:h-20 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+        className="absolute z-[2] top-[15%] left-[5%] md:left-[10%] w-20 h-14 md:w-28 md:h-20 rounded-xl bg-white/15 border border-white/20 shadow-2xl"
         animateProps={{
           y: [0, -15, 0],
           rotateX: [0, 10, 0],
@@ -179,7 +171,7 @@ const Hero = () => {
         transitionProps={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <ClickableGlassCard
-        className="absolute z-[2] bottom-[20%] right-[5%] md:right-[12%] w-24 h-16 md:w-32 md:h-22 rounded-xl bg-accent/10 backdrop-blur-sm border border-accent/20 shadow-2xl"
+        className="absolute z-[2] bottom-[20%] right-[5%] md:right-[12%] w-24 h-16 md:w-32 md:h-22 rounded-xl bg-accent/15 border border-accent/20 shadow-2xl"
         animateProps={{
           y: [0, 20, 0],
           rotateX: [5, -5, 5],
@@ -188,7 +180,7 @@ const Hero = () => {
         transitionProps={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
       />
       <ClickableGlassCard
-        className="absolute z-[2] top-[55%] left-[3%] md:left-[8%] w-16 h-12 md:w-24 md:h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl"
+        className="absolute z-[2] top-[55%] left-[3%] md:left-[8%] w-16 h-12 md:w-24 md:h-16 rounded-xl bg-white/10 border border-white/10 shadow-xl"
         animateProps={{
           y: [0, 12, 0],
           rotateX: [-5, 8, -5],
@@ -199,7 +191,7 @@ const Hero = () => {
 
       {/* Content with parallax */}
       <motion.div
-        className="container mx-auto px-4 pt-20 relative z-10"
+        className="container mx-auto px-4 pt-20 relative z-10 will-change-transform"
         style={{ y: contentY }}
       >
         <div className="max-w-5xl mx-auto text-center">
@@ -207,7 +199,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-accent/30"
+            className="inline-flex items-center gap-2 bg-accent/25 rounded-full px-5 py-2.5 mb-8 border border-accent/30"
           >
             <TrendingUp className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-accent tracking-wide">
