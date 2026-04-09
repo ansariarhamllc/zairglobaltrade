@@ -40,10 +40,11 @@ const ClickableFloatingIcon = ({ item, index }: { item: FallingItem; index: numb
       animate={
         fallen
           ? {
-              y: [0, -30, 800],
-              rotate: [0, -20, 180],
-              opacity: [1, 1, 0],
-              scale: [1, 1.3, 0.5],
+              y: [0, -15, -25, -30, -28, -20, 0, 40, 100, 200, 350, 550, 900],
+              rotate: [0, -5, -8, -3, 5, 15, 30, 55, 90, 140, 200, 280, 400],
+              opacity: [1, 1, 1, 1, 1, 1, 1, 1, 1, 0.9, 0.7, 0.4, 0],
+              scale: [1, 1.1, 1.15, 1.1, 1.05, 1, 0.95, 0.9, 0.85, 0.8, 0.7, 0.5, 0.3],
+              x: [0, 2, -3, 5, -4, 6, -2, 8, -5, 10, -3, 7, 0],
             }
           : {
               y: [0, -20, 0],
@@ -56,7 +57,7 @@ const ClickableFloatingIcon = ({ item, index }: { item: FallingItem; index: numb
       }
       transition={
         fallen
-          ? { duration: 1.2, ease: [0.55, 0, 1, 0.45] }
+          ? { duration: 2, times: [0, 0.05, 0.1, 0.15, 0.18, 0.22, 0.3, 0.4, 0.5, 0.62, 0.75, 0.88, 1], ease: "linear" }
           : { duration: 6, delay: item.delay, repeat: Infinity, ease: "easeInOut" }
       }
       onClick={handleClick}
@@ -92,16 +93,16 @@ const ClickableGlassCard = ({
       animate={
         fallen
           ? {
-              y: [0, -40, 900],
-              rotate: [0, 30, -60, 200],
-              opacity: [1, 1, 0],
-              scale: [1, 1.1, 0.3],
+              y: [0, -20, -35, -40, -38, -30, -10, 30, 90, 180, 320, 500, 850],
+              rotate: [0, 3, 8, 5, -2, -10, -20, -35, -55, -80, -120, -170, -240],
+              opacity: [1, 1, 1, 1, 1, 1, 1, 1, 0.95, 0.85, 0.6, 0.3, 0],
+              scale: [1, 1.05, 1.1, 1.08, 1.04, 1, 0.97, 0.93, 0.88, 0.8, 0.65, 0.45, 0.2],
             }
           : animateProps
       }
       transition={
         fallen
-          ? { duration: 1.5, ease: [0.55, 0, 1, 0.45] }
+          ? { duration: 2.2, times: [0, 0.05, 0.1, 0.15, 0.18, 0.22, 0.3, 0.4, 0.5, 0.62, 0.75, 0.88, 1], ease: "linear" }
           : transitionProps
       }
       onClick={handleClick}
