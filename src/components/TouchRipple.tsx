@@ -12,7 +12,7 @@ const TouchRipple = () => {
 
   const addRipple = useCallback((x: number, y: number) => {
     const id = Date.now() + Math.random();
-    const size = 120 + Math.random() * 60;
+    const size = 60 + Math.random() * 30;
     setRipples((prev) => [...prev, { id, x, y, size }]);
     // Auto-remove after animation
     window.setTimeout(() => {
@@ -42,7 +42,7 @@ const TouchRipple = () => {
     >
       {ripples.map((r) => (
         <span key={r.id}>
-          {/* Outer water ring */}
+          {/* Outer water ring - soft & blurry */}
           <span
             className="absolute rounded-full animate-water-ripple"
             style={{
@@ -52,11 +52,10 @@ const TouchRipple = () => {
               height: r.size,
               marginLeft: -r.size / 2,
               marginTop: -r.size / 2,
-              border: "2px solid hsl(var(--accent) / 0.6)",
+              border: "1px solid hsl(var(--accent) / 0.25)",
               background:
-                "radial-gradient(circle, hsl(var(--accent) / 0.15) 0%, hsl(var(--accent) / 0.05) 40%, transparent 70%)",
-              boxShadow:
-                "0 0 20px hsl(var(--accent) / 0.4), inset 0 0 15px hsl(var(--background) / 0.3)",
+                "radial-gradient(circle, hsl(var(--accent) / 0.06) 0%, hsl(var(--accent) / 0.02) 40%, transparent 70%)",
+              filter: "blur(2px)",
             }}
           />
           {/* Inner secondary ring with delay */}
@@ -69,23 +68,24 @@ const TouchRipple = () => {
               height: r.size * 0.6,
               marginLeft: (-r.size * 0.6) / 2,
               marginTop: (-r.size * 0.6) / 2,
-              border: "1px solid hsl(var(--primary) / 0.5)",
+              border: "1px solid hsl(var(--primary) / 0.2)",
               background:
-                "radial-gradient(circle, hsl(var(--background) / 0.2) 0%, transparent 60%)",
+                "radial-gradient(circle, hsl(var(--background) / 0.08) 0%, transparent 60%)",
+              filter: "blur(1.5px)",
             }}
           />
-          {/* Center splash */}
+          {/* Center splash - subtle */}
           <span
             className="absolute rounded-full animate-water-splash"
             style={{
               left: r.x,
               top: r.y,
-              width: 12,
-              height: 12,
-              marginLeft: -6,
-              marginTop: -6,
-              background: "hsl(var(--accent))",
-              boxShadow: "0 0 16px hsl(var(--accent) / 0.9)",
+              width: 6,
+              height: 6,
+              marginLeft: -3,
+              marginTop: -3,
+              background: "hsl(var(--accent) / 0.5)",
+              filter: "blur(1px)",
             }}
           />
         </span>
