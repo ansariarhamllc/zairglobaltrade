@@ -149,8 +149,8 @@
 
   /* ---- Glass (no backdrop-blur for perf) ---- */
   .glass-card {
-    background: hsl(35 25% 97% / 0.92);
-    border: 1px solid hsl(35 25% 85% / 0.5);
+    background: hsl(0 0% 100% / 0.85);
+    border: 1px solid hsl(0 0% 90% / 0.7);
   }
 
   /* ---- Hover / Lift ---- */
@@ -178,13 +178,13 @@
     animation: pulseGlow 3s ease-in-out infinite;
   }
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 15px hsl(38 70% 50% / 0.15); }
-    50% { box-shadow: 0 0 35px hsl(38 70% 50% / 0.35); }
+    0%, 100% { box-shadow: 0 0 15px hsl(208 38% 60% / 0.15); }
+    50% { box-shadow: 0 0 35px hsl(208 38% 60% / 0.3); }
   }
 
   /* ---- Shimmer ---- */
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, hsl(38 70% 50% / 0.08), transparent);
+    background: linear-gradient(90deg, transparent, hsl(208 38% 60% / 0.08), transparent);
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
   }
