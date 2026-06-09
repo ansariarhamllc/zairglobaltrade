@@ -4,8 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoaderWrapper from "./components/PageLoader";
-import GlassCursor from "./components/GlassCursor";
-import TouchRipple from "./components/TouchRipple";
 import Index from "./pages/Index";
 import Commodities from "./pages/Commodities";
 import About from "./pages/About";
@@ -19,8 +17,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <GlassCursor />
-      <TouchRipple />
       <LoaderWrapper>
         <BrowserRouter>
           <Routes>

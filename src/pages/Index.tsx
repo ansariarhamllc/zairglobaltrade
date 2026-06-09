@@ -5,11 +5,6 @@ import PageTransition from "@/components/PageTransition";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
 import { ArrowRight, Truck, ShieldCheck, Leaf } from "lucide-react";
-import { motion } from "framer-motion";
-import WheatStalk from "@/components/illustrations/WheatStalk";
-import LeafPattern from "@/components/illustrations/LeafPattern";
-import DottedArc from "@/components/illustrations/DottedArc";
-import OrganicBlob from "@/components/illustrations/OrganicBlob";
 
 const Index = () => {
   return (
@@ -19,44 +14,30 @@ const Index = () => {
         <Hero />
 
         {/* Why Choose Us */}
-        <section className="py-20 bg-section-warm relative overflow-hidden">
-          {/* Illustration decorations */}
-          <WheatStalk className="absolute left-0 top-10 w-16 md:w-20 opacity-60" delay={0.3} />
-          <WheatStalk className="absolute right-0 top-20 w-14 md:w-18 opacity-40" delay={0.6} flip />
-          <LeafPattern className="absolute right-10 bottom-10 w-24 md:w-32 opacity-50" delay={0.8} />
-          <OrganicBlob className="absolute -left-20 bottom-0 w-60 md:w-80 opacity-30" delay={0.2} />
-          <DottedArc className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] opacity-30 pointer-events-none" delay={1} />
-
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4">
             <ScrollReveal>
-              <div className="text-center mb-12">
-                <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              <div className="text-center mb-16 max-w-2xl mx-auto">
+                <span className="inline-block text-xs uppercase tracking-[0.25em] text-accent mb-4 font-medium">
                   Why Choose Us
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-                  Trade with <span className="text-gradient">Confidence</span>
+                <h2 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+                  Trade with Confidence
                 </h2>
               </div>
             </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-px bg-border max-w-5xl mx-auto border border-border rounded-lg overflow-hidden">
               {[
-                { icon: Leaf, title: "Farm Fresh Quality", desc: "Direct sourcing from certified Indian farms ensuring the freshest, premium-grade produce." },
-                { icon: Truck, title: "Global Delivery", desc: "Reliable logistics and cold-chain management for timely delivery worldwide." },
+                { icon: Leaf, title: "Farm Fresh Quality", desc: "Direct sourcing from certified Indian farms ensuring premium-grade produce." },
+                { icon: Truck, title: "Global Delivery", desc: "Reliable logistics and cold-chain management for timely worldwide delivery." },
                 { icon: ShieldCheck, title: "Certified & Safe", desc: "International quality certifications with rigorous lab testing at every stage." },
               ].map((item, i) => (
-                <ScrollReveal key={i} delay={i * 0.12} direction="scale">
-                  <motion.div
-                    whileHover={{ y: -8, rotateX: 2, rotateY: -2 }}
-                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                    className="glass-card rounded-2xl p-8 text-center shadow-3d cursor-default"
-                    style={{ perspective: 1200 }}
-                  >
-                    <div className="w-16 h-16 bg-accent/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                      <item.icon className="h-8 w-8 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3 font-serif">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </motion.div>
+                <ScrollReveal key={i} delay={i * 0.08}>
+                  <div className="bg-card p-10 h-full">
+                    <item.icon className="h-6 w-6 text-accent mb-5" strokeWidth={1.5} />
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>
@@ -65,20 +46,19 @@ const Index = () => {
 
         {/* Recent Exports Banner */}
         <ScrollReveal>
-          <section className="py-16 bg-hero-gradient text-primary-foreground relative overflow-hidden">
-            <WheatStalk className="absolute right-4 top-0 w-12 opacity-30" delay={0.2} flip />
-            <LeafPattern className="absolute left-4 bottom-0 w-20 opacity-20" delay={0.5} />
-            <div className="container mx-auto px-4 relative z-10">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <section className="py-20 bg-primary text-primary-foreground">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 max-w-5xl mx-auto">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-3">Recent Exports Delivered Successfully</h2>
-                  <p className="text-primary-foreground/70 text-lg">Fresh produce shipped globally with 100% client satisfaction.</p>
+                  <h2 className="text-2xl md:text-3xl font-semibold mb-3 tracking-tight">Recent Exports Delivered Successfully</h2>
+                  <p className="text-primary-foreground/70 text-base">Fresh produce shipped globally with 100% client satisfaction.</p>
                 </div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Link to="/experience" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold shadow-elevation">
-                    View Our Journey <ArrowRight className="h-5 w-5" />
-                  </Link>
-                </motion.div>
+                <Link
+                  to="/experience"
+                  className="inline-flex items-center gap-2 border border-primary-foreground/30 hover:bg-primary-foreground/10 px-6 py-3 rounded-md font-medium text-sm transition-colors whitespace-nowrap"
+                >
+                  View Our Journey <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </section>
