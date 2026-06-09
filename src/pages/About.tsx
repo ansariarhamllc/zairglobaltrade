@@ -63,7 +63,6 @@ const About = () => {
 
           {/* Story Section */}
           <section className="py-20 bg-section-warm relative overflow-hidden">
-            <DottedArc className="absolute bottom-20 left-1/4 w-80 opacity-20 pointer-events-none" delay={1} />
             <div className="container mx-auto px-4 relative z-10">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <ScrollReveal direction="left">
@@ -116,7 +115,6 @@ const About = () => {
 
           {/* Features Grid */}
           <section className="py-20 bg-background relative overflow-hidden">
-            <OrganicBlob className="absolute right-0 top-0 w-80 opacity-15 pointer-events-none" delay={0.6} color="hsl(25 45% 25% / 0.04)" />
             <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
