@@ -226,7 +226,7 @@ const Hero = () => {
               >
                 <motion.path
                   d="M2 8C50 2 100 2 150 6C200 10 250 4 298 6"
-                  stroke="hsl(38 70% 50%)"
+                  stroke="hsl(208 38% 60%)"
                   strokeWidth="3"
                   strokeLinecap="round"
                   initial={{ pathLength: 0 }}
