@@ -61,7 +61,7 @@ const ClickableFloatingIcon = ({ item, index }: { item: FallingItem; index: numb
           : { duration: 6, delay: item.delay, repeat: Infinity, ease: "easeInOut" }
       }
       onClick={handleClick}
-      whileHover={{ scale: 1.4, color: "hsl(38 70% 50%)" }}
+      whileHover={{ scale: 1.4, color: "hsl(208 38% 60%)" }}
       whileTap={{ scale: 0.8 }}
     >
       <item.icon size={item.size} />
