@@ -23,7 +23,7 @@ const Header = () => {
           </div>
           <div>
             <h1 className="text-lg font-black text-foreground tracking-tight">ZAIR GLOBAL TRADE</h1>
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Export & Import Excellence</p>
+            <p className="text-[11px] text-muted-foreground uppercase tracking-[0.2em] font-medium">Export & Import Excellence</p>
           </div>
         </Link>
 

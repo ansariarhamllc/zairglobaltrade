@@ -18,7 +18,7 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <ScrollReveal>
               <div className="text-center mb-16 max-w-2xl mx-auto">
-                <span className="inline-block text-xs uppercase tracking-[0.25em] text-accent mb-4 font-medium">
+                <span className="inline-block text-sm uppercase tracking-[0.3em] text-accent mb-4 font-semibold">
                   Why Choose Us
                 </span>
                 <h2 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">

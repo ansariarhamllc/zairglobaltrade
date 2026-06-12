@@ -17,7 +17,7 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl font-black">ZAIR GLOBAL TRADE</h3>
-                <p className="text-[10px] text-primary-foreground/60 uppercase tracking-widest">Export & Import Excellence</p>
+                <p className="text-[11px] text-primary-foreground/60 uppercase tracking-[0.2em] font-medium">Export & Import Excellence</p>
               </div>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-md leading-relaxed">

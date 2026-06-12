@@ -59,7 +59,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block text-xs uppercase tracking-[0.25em] text-primary-foreground/70 mb-6 font-medium"
+            className="inline-block text-sm uppercase tracking-[0.3em] text-primary-foreground/70 mb-6 font-semibold"
           >
             Trusted Global Trading Partner
           </motion.span>
@@ -116,7 +116,7 @@ const Hero = () => {
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl md:text-3xl font-semibold text-primary-foreground">{s.val}</p>
-                <p className="text-xs uppercase tracking-wider text-primary-foreground/55 mt-1">{s.label}</p>
+                <p className="text-sm uppercase tracking-widest text-primary-foreground/55 mt-1 font-medium">{s.label}</p>
               </div>
             ))}
           </motion.div>

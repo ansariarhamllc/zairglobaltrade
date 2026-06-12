@@ -32,7 +32,7 @@ const PageLoader = ({ onComplete }: { onComplete: () => void }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-[11px] font-semibold tracking-[0.35em] uppercase text-foreground/90">
+          <h2 className="text-[13px] font-semibold tracking-[0.3em] uppercase text-foreground/90">
             Zair Global Trade
           </h2>
         </motion.div>
