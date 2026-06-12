@@ -116,7 +116,7 @@ const Hero = () => {
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl md:text-3xl font-semibold text-primary-foreground">{s.val}</p>
-                <p className="text-xs uppercase tracking-wider text-primary-foreground/55 mt-1">{s.label}</p>
+                <p className="text-sm uppercase tracking-widest text-primary-foreground/55 mt-1 font-medium">{s.label}</p>
               </div>
             ))}
           </motion.div>
