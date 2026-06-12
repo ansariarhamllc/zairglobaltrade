@@ -64,7 +64,7 @@ const ProductCard = ({ name, category, image, isSelected, onSelect, index = 0 }:
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <p className="text-xs text-muted-foreground uppercase tracking-widest font-medium">{category}</p>
+          <p className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">{category}</p>
         </div>
         <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 font-serif">{name}</h3>
         <div className="flex items-center gap-1 text-sm text-accent mt-3 opacity-0 group-hover:opacity-100 transition-all duration-400 transform translate-y-2 group-hover:translate-y-0">
