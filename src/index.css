@@ -163,6 +163,14 @@
     transform: translateY(-6px);
   }
 
+  /* ---- Uppercase text treatment ---- */
+  .text-caps {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+
   /* ---- Smooth global transitions ---- */
   a, button, .transition-smooth {
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
