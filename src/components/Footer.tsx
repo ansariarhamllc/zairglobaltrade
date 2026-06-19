@@ -1,4 +1,4 @@
-import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
