@@ -64,6 +64,50 @@ const Index = () => {
           </section>
         </ScrollReveal>
 
+        {/* Explore — contextual internal links */}
+        <section className="py-20 bg-background border-t border-border">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <ScrollReveal>
+              <div className="mb-12 max-w-2xl">
+                <span className="inline-block text-sm uppercase tracking-[0.3em] text-accent mb-3 font-semibold">
+                  Explore More
+                </span>
+                <h2 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+                  Discover Zair Global Trade
+                </h2>
+              </div>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-px bg-border border border-border rounded-lg overflow-hidden">
+              {[
+                { to: "/commodities", title: "Browse Our Commodities", desc: "Explore our full range of premium agricultural commodities and FMCG products available for export." },
+                { to: "/about", title: "About Zair Global Trade", desc: "Learn how we connect Indian farms to global buyers with quality-graded, lab-tested produce." },
+                { to: "/experience", title: "Our Export Experience", desc: "See recent shipments and the markets we've successfully delivered to worldwide." },
+                { to: "/founder", title: "Meet the Founder", desc: "Get to know Shahbaz Ansari and the vision behind Zair Global Trade." },
+              ].map((item, i) => (
+                <ScrollReveal key={i} delay={i * 0.06}>
+                  <Link to={item.to} className="block bg-card p-8 h-full hover:bg-muted transition-colors group">
+                    <h3 className="text-lg font-semibold text-foreground mb-2 flex items-center justify-between">
+                      {item.title}
+                      <ArrowRight className="h-4 w-4 text-accent group-hover:translate-x-1 transition-transform" />
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+            <div className="mt-10 text-sm text-muted-foreground leading-relaxed max-w-3xl">
+              Looking for something specific? Request a quote on our{" "}
+              <Link to="/commodities" className="text-accent hover:underline font-medium">commodities page</Link>,
+              read about our{" "}
+              <Link to="/about" className="text-accent hover:underline font-medium">company values</Link>,
+              review our{" "}
+              <Link to="/experience" className="text-accent hover:underline font-medium">export track record</Link>, or
+              connect directly with our{" "}
+              <Link to="/founder" className="text-accent hover:underline font-medium">founder</Link>.
+            </div>
+          </div>
+        </section>
+
         <Footer />
       </div>
     </PageTransition>
