@@ -19,35 +19,29 @@ const Hero = () => {
   const [enableVideo, setEnableVideo] = useState(false);
   const indexRef = useRef(0);
 
-  // Decide whether to load videos at all. Skip on slow connections,
-  // save-data mode, reduced motion, or very small screens to save bandwidth.
+  // Load videos on all devices. Only skip if the user explicitly prefers reduced motion.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const nav = navigator as Navigator & {
-      connection?: { saveData?: boolean; effectiveType?: string };
-    };
-    const conn = nav.connection;
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return; // keep poster only
+
     const smallScreen = window.matchMedia?.("(max-width: 640px)").matches;
-    const slow =
-      conn?.saveData ||
-      (conn?.effectiveType && /(^2g$|slow-2g|3g)/.test(conn.effectiveType));
 
-    if (reduceMotion || slow) return; // keep poster only
-
-    // Defer video load slightly so it doesn't block LCP / initial paint.
     const start = () => {
       setSrcA(videos[0]);
       setEnableVideo(true);
-      // Preload second only after first is well underway to save bandwidth.
-      setTimeout(() => setSrcB(videos[1]), smallScreen ? 8000 : 4000);
+      // Some mobile browsers (iOS Safari, in-app webviews) need an explicit play() call.
+      requestAnimationFrame(() => {
+        videoARef.current?.play().catch(() => {});
+      });
+      setTimeout(() => setSrcB(videos[1]), smallScreen ? 6000 : 3000);
     };
 
     if ("requestIdleCallback" in window) {
       (window as Window & { requestIdleCallback: (cb: () => void) => void })
         .requestIdleCallback(start);
     } else {
-      setTimeout(start, 800);
+      setTimeout(start, 400);
     }
   }, []);
 
