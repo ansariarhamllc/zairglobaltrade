@@ -2,9 +2,10 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import hero1 from "@/assets/hero-1.mp4.asset.json";
 import hero2 from "@/assets/hero-2.mp4.asset.json";
+import heroPoster from "@/assets/hero-banner.jpg";
 
 const videos = [hero1.url, hero2.url];
 
@@ -12,10 +13,43 @@ const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoARef = useRef<HTMLVideoElement>(null);
   const videoBRef = useRef<HTMLVideoElement>(null);
-  const [active, setActive] = useState(0); // 0 -> A visible, 1 -> B visible
-  const [srcA, setSrcA] = useState(videos[0]);
-  const [srcB, setSrcB] = useState(videos[1]);
-  const indexRef = useRef(1); // index of what's currently in B
+  const [active, setActive] = useState(0);
+  const [srcA, setSrcA] = useState<string | null>(null);
+  const [srcB, setSrcB] = useState<string | null>(null);
+  const [enableVideo, setEnableVideo] = useState(false);
+  const indexRef = useRef(0);
+
+  // Decide whether to load videos at all. Skip on slow connections,
+  // save-data mode, reduced motion, or very small screens to save bandwidth.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const nav = navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    };
+    const conn = nav.connection;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const smallScreen = window.matchMedia?.("(max-width: 640px)").matches;
+    const slow =
+      conn?.saveData ||
+      (conn?.effectiveType && /(^2g$|slow-2g|3g)/.test(conn.effectiveType));
+
+    if (reduceMotion || slow) return; // keep poster only
+
+    // Defer video load slightly so it doesn't block LCP / initial paint.
+    const start = () => {
+      setSrcA(videos[0]);
+      setEnableVideo(true);
+      // Preload second only after first is well underway to save bandwidth.
+      setTimeout(() => setSrcB(videos[1]), smallScreen ? 8000 : 4000);
+    };
+
+    if ("requestIdleCallback" in window) {
+      (window as Window & { requestIdleCallback: (cb: () => void) => void })
+        .requestIdleCallback(start);
+    } else {
+      setTimeout(start, 800);
+    }
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -24,23 +58,20 @@ const Hero = () => {
 
   const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const mediaScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
-  const mediaRotate = useTransform(scrollYProgress, [0, 1], [0, -4]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const handleEnded = (which: "A" | "B") => {
-    // Swap active layer
     const next = which === "A" ? 1 : 0;
     setActive(next);
-    // Preload next video into the layer that just finished
     const nextIndex = (indexRef.current + 1) % videos.length;
     indexRef.current = nextIndex;
     if (which === "A") {
-      setSrcA(videos[nextIndex]);
-      // play the now-visible B
+      // Free the just-finished layer and queue next clip there.
+      setSrcA(videos[(nextIndex + 1) % videos.length]);
       videoBRef.current?.play().catch(() => {});
     } else {
-      setSrcB(videos[nextIndex]);
+      setSrcB(videos[(nextIndex + 1) % videos.length]);
       videoARef.current?.play().catch(() => {});
     }
   };
@@ -50,42 +81,49 @@ const Hero = () => {
       id="home"
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ perspective: "1200px" }}
     >
       <motion.div
         className="absolute inset-0 will-change-transform"
-        style={{
-          y: mediaY,
-          scale: mediaScale,
-          rotateX: mediaRotate,
-          transformStyle: "preserve-3d",
-        }}
+        style={{ y: mediaY, scale: mediaScale }}
       >
-        <video
-          ref={videoARef}
-          key={srcA}
-          src={srcA}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          onEnded={() => handleEnded("A")}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            active === 0 ? "opacity-100" : "opacity-0"
-          }`}
+        {/* Poster — instant LCP, always visible behind videos */}
+        <img
+          src={heroPoster}
+          alt="Premium agricultural commodities ready for export"
+          className="absolute inset-0 w-full h-full object-cover"
+          fetchPriority="high"
+          decoding="async"
         />
-        <video
-          ref={videoBRef}
-          key={srcB}
-          src={srcB}
-          muted
-          playsInline
-          preload="auto"
-          onEnded={() => handleEnded("B")}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            active === 1 ? "opacity-100" : "opacity-0"
-          }`}
-        />
+
+        {enableVideo && srcA && (
+          <video
+            ref={videoARef}
+            src={srcA}
+            poster={heroPoster}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onEnded={() => handleEnded("A")}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              active === 0 ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
+        {enableVideo && srcB && (
+          <video
+            ref={videoBRef}
+            src={srcB}
+            poster={heroPoster}
+            muted
+            playsInline
+            preload="metadata"
+            onEnded={() => handleEnded("B")}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              active === 1 ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
       </motion.div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
