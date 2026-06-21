@@ -13,8 +13,15 @@ const Founder = () => {
         <Header />
         <main className="pt-24">
           {/* Hero */}
-          <section className="py-20 bg-background border-b border-border">
-            <div className="container mx-auto px-4 max-w-5xl">
+          <section className="relative py-20 bg-background border-b border-border overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1800&h=900&fit=crop"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none"
+            />
+            <div className="container mx-auto px-4 max-w-5xl relative">
               <ScrollReveal>
                 <span className="text-sm uppercase tracking-[0.3em] font-semibold text-accent">
                   Company &amp; Founder

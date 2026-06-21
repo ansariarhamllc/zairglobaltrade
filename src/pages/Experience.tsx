@@ -38,6 +38,12 @@ const Experience = () => {
         <div className="pt-20">
           {/* Hero */}
           <section className="py-24 bg-hero-gradient text-primary-foreground relative overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1577906096429-f73c2c312435?w=1800&h=900&fit=crop"
+              alt="Cargo containers at an export shipping port"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover opacity-20"
+            />
             <div className="absolute inset-0 bg-hero-pattern opacity-5" />
             <motion.div
               className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/10 rounded-full blur-3xl"
@@ -96,6 +102,13 @@ const Experience = () => {
 
           {/* Timeline */}
           <section className="py-20 bg-section-cream relative overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1600&h=900&fit=crop"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.06] pointer-events-none"
+            />
             <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">

@@ -44,6 +44,32 @@ const Index = () => {
           </div>
         </section>
 
+        {/* From the Field — image band */}
+        <ScrollReveal>
+          <section className="relative py-32 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1800&h=900&fit=crop"
+              alt="Indian agricultural fields at sunrise"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-primary/75" />
+            <div className="container mx-auto px-4 relative z-10">
+              <div className="max-w-2xl text-primary-foreground">
+                <span className="inline-block text-sm uppercase tracking-[0.3em] text-accent mb-4 font-semibold">
+                  From the Field
+                </span>
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+                  Harvested with care, shipped with precision
+                </h2>
+                <p className="text-primary-foreground/75 text-base leading-relaxed">
+                  Every consignment begins at a partner farm and ends at a buyer's port — fully traceable, quality-graded, and on schedule.
+                </p>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
         {/* Recent Exports Banner */}
         <ScrollReveal>
           <section className="py-20 bg-primary text-primary-foreground">
