@@ -2,22 +2,48 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import heroBanner from "@/assets/hero-banner.jpg";
+import { useRef, useState } from "react";
+import hero1 from "@/assets/hero-1.mp4.asset.json";
+import hero2 from "@/assets/hero-2.mp4.asset.json";
+
+const videos = [hero1.url, hero2.url];
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const videoARef = useRef<HTMLVideoElement>(null);
+  const videoBRef = useRef<HTMLVideoElement>(null);
+  const [active, setActive] = useState(0); // 0 -> A visible, 1 -> B visible
+  const [srcA, setSrcA] = useState(videos[0]);
+  const [srcB, setSrcB] = useState(videos[1]);
+  const indexRef = useRef(1); // index of what's currently in B
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  // Clean 3D scroll effect — depth via scale, slight tilt, and opacity
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
-  const imgRotate = useTransform(scrollYProgress, [0, 1], [0, -4]);
+  const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const mediaScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
+  const mediaRotate = useTransform(scrollYProgress, [0, 1], [0, -4]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const handleEnded = (which: "A" | "B") => {
+    // Swap active layer
+    const next = which === "A" ? 1 : 0;
+    setActive(next);
+    // Preload next video into the layer that just finished
+    const nextIndex = (indexRef.current + 1) % videos.length;
+    indexRef.current = nextIndex;
+    if (which === "A") {
+      setSrcA(videos[nextIndex]);
+      // play the now-visible B
+      videoBRef.current?.play().catch(() => {});
+    } else {
+      setSrcB(videos[nextIndex]);
+      videoARef.current?.play().catch(() => {});
+    }
+  };
 
   return (
     <section
@@ -26,30 +52,44 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ perspective: "1200px" }}
     >
-      {/* 3D parallax banner */}
       <motion.div
         className="absolute inset-0 will-change-transform"
         style={{
-          y: imgY,
-          scale: imgScale,
-          rotateX: imgRotate,
+          y: mediaY,
+          scale: mediaScale,
+          rotateX: mediaRotate,
           transformStyle: "preserve-3d",
         }}
       >
-        <img
-          src={heroBanner}
-          alt="Premium agricultural export field at golden hour"
-          className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-          loading="eager"
+        <video
+          ref={videoARef}
+          key={srcA}
+          src={srcA}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          onEnded={() => handleEnded("A")}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            active === 0 ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <video
+          ref={videoBRef}
+          key={srcB}
+          src={srcB}
+          muted
+          playsInline
+          preload="auto"
+          onEnded={() => handleEnded("B")}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            active === 1 ? "opacity-100" : "opacity-0"
+          }`}
         />
       </motion.div>
 
-      {/* Refined gradient overlay for legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
 
-      {/* Content */}
       <motion.div
         className="container mx-auto px-4 pt-20 relative z-10 will-change-transform"
         style={{ y: contentY, opacity: contentOpacity }}
@@ -102,7 +142,6 @@ const Hero = () => {
             </Button>
           </motion.div>
 
-          {/* Stats — minimal */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}

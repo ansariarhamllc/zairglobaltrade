@@ -118,7 +118,7 @@ const Founder = () => {
                       <Linkedin className="h-4 w-4" /> Connect on LinkedIn
                     </a>
                     <a
-                      href="https://wa.me/919560288244"
+                      href="https://wa.me/919560288244?text=Hello%20Zair%20Global%20Trade%2C%20I%27d%20like%20to%20discuss%20an%20inquiry."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground font-medium hover:bg-muted transition-colors"

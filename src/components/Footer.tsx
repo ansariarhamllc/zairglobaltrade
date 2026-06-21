@@ -27,7 +27,7 @@ const Footer = () => {
             
             <div className="flex gap-3">
               <a
-                href="https://wa.me/919560288244"
+                href="https://wa.me/919560288244?text=Hello%20Zair%20Global%20Trade%2C%20I%27d%20like%20to%20discuss%20an%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 rounded-xl bg-primary-foreground/10 hover:bg-accent/20 flex items-center justify-center transition-all hover-lift"
