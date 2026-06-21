@@ -145,6 +145,13 @@ const About = () => {
 
           {/* Values */}
           <section className="py-20 bg-section-cream relative overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?w=1600&h=900&fit=crop"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.06] pointer-events-none"
+            />
             <div className="container mx-auto px-4 relative z-10">
               <ScrollReveal>
                 <div className="text-center mb-14">
