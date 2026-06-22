@@ -7,7 +7,14 @@ import hero1 from "@/assets/hero-1.mp4.asset.json";
 import hero2 from "@/assets/hero-2.mp4.asset.json";
 import heroPoster from "@/assets/hero-banner.jpg";
 
-const videos = [hero1.url, hero2.url];
+// Asset pointers resolve to /__l5e/... which is only served by Lovable hosting.
+// When deployed elsewhere (e.g. Netlify), prefix with the Lovable CDN origin
+// so the videos still load from Lovable's asset storage.
+const ASSET_ORIGIN =
+  typeof window !== "undefined" && !window.location.host.includes("lovable")
+    ? "https://zairglobaltrade.lovable.app"
+    : "";
+const videos = [`${ASSET_ORIGIN}${hero1.url}`, `${ASSET_ORIGIN}${hero2.url}`];
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
