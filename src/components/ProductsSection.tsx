@@ -61,8 +61,9 @@ const ProductsSection = () => {
               name={product.name}
               category={product.category}
               image={product.image}
-              isSelected={selectedProduct === product.name}
-              onSelect={() => handleProductSelect(product.name)}
+              varieties={product.varieties}
+              isSelected={selectedProduct?.startsWith(product.name) ?? false}
+              onSelect={(variety) => handleProductSelect(variety ? `${product.name} — ${variety}` : product.name)}
               index={i}
             />
           ))}
