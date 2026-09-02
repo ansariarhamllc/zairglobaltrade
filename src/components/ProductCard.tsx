@@ -85,7 +85,7 @@ const ProductCard = ({ name, category, image, varieties = [], isSelected, onSele
               className="overflow-hidden"
             >
               <p className="mt-4 mb-2 text-[13px] uppercase tracking-widest font-semibold text-muted-foreground">
-                Select type
+                Select export format
               </p>
               <ul className="flex flex-col gap-1.5">
                 {varieties.map((v) => (
