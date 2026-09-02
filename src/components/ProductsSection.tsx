@@ -11,18 +11,19 @@ import drumstickImg from "@/assets/drumstick.png";
 import roseWaterImg from "@/assets/rose-water.png";
 
 const products = [
-  { id: 1, name: "Green Banana", category: "Fruits", image: greenBananaImg },
-  { id: 2, name: "Onion", category: "Vegetables", image: onionImg },
-  { id: 3, name: "Green Chilli", category: "Vegetables", image: greenChilliImg },
-  { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop" },
-  { id: 5, name: "Drumstick", category: "Vegetables", image: drumstickImg },
-  { id: 6, name: "Custard Apple", category: "Fruits", image: custardAppleImg },
-  { id: 7, name: "Basmati Rice", category: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
-  { id: 8, name: "Yellow Corn", category: "Grains", image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=400&fit=crop" },
-  { id: 9, name: "Honey", category: "FMCG", image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=400&fit=crop" },
-  { id: 10, name: "Arabica Coffee", category: "Beverages", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=400&fit=crop" },
-  { id: 11, name: "Farm Fresh Grapes", category: "Fruits", image: grapesImg },
-  { id: 12, name: "Rose Water", category: "FMCG", image: roseWaterImg },
+  { id: 1, name: "Green Banana", category: "Fruits", image: greenBananaImg, varieties: ["Cavendish", "Robusta", "Grand Naine", "Nendran"] },
+  { id: 2, name: "Onion", category: "Vegetables", image: onionImg, varieties: ["Red Onion", "White Onion", "Pink Onion", "Dehydrated Onion"] },
+  { id: 13, name: "Onion Barista", category: "Vegetables", image: onionImg, varieties: ["Fried Onion Barista", "Crispy Golden Barista", "Onion Flakes", "Onion Powder"] },
+  { id: 3, name: "Green Chilli", category: "Vegetables", image: greenChilliImg, varieties: ["G4 Chilli", "Jwala Chilli", "Byadgi", "Teja"] },
+  { id: 4, name: "Tomato", category: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop", varieties: ["Hybrid Round", "Roma / Plum", "Cherry Tomato"] },
+  { id: 5, name: "Drumstick", category: "Vegetables", image: drumstickImg, varieties: ["PKM-1", "PKM-2", "Local Fresh"] },
+  { id: 6, name: "Custard Apple", category: "Fruits", image: custardAppleImg, varieties: ["Balanagar", "Arka Sahan", "Red Sitaphal"] },
+  { id: 7, name: "Basmati Rice", category: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop", varieties: ["1121 Steam", "1121 Sella", "Pusa Basmati", "Golden Sella"] },
+  { id: 8, name: "Yellow Corn", category: "Grains", image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=400&fit=crop", varieties: ["Feed Grade", "Human Consumption", "Sweet Corn"] },
+  { id: 9, name: "Honey", category: "FMCG", image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=400&fit=crop", varieties: ["Multiflora", "Acacia", "Organic Raw", "Bulk Drum"] },
+  { id: 10, name: "Arabica Coffee", category: "Beverages", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=400&fit=crop", varieties: ["Green Beans", "Roasted Beans", "Ground Coffee"] },
+  { id: 11, name: "Farm Fresh Grapes", category: "Fruits", image: grapesImg, varieties: ["Thompson Seedless", "Flame Seedless", "Black Grapes"] },
+  { id: 12, name: "Rose Water", category: "FMCG", image: roseWaterImg, varieties: ["Pure Rose Water", "Edible Grade", "Bulk Supply"] },
 ];
 
 const ProductsSection = () => {
@@ -33,6 +34,7 @@ const ProductsSection = () => {
     setSelectedProduct(productName);
     setShowForm(true);
   };
+
 
   return (
     <section id="products" className="py-20 bg-section-warm">
@@ -59,8 +61,9 @@ const ProductsSection = () => {
               name={product.name}
               category={product.category}
               image={product.image}
-              isSelected={selectedProduct === product.name}
-              onSelect={() => handleProductSelect(product.name)}
+              varieties={product.varieties}
+              isSelected={selectedProduct?.startsWith(product.name) ?? false}
+              onSelect={(variety) => handleProductSelect(variety ? `${product.name} — ${variety}` : product.name)}
               index={i}
             />
           ))}
