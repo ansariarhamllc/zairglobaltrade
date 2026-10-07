@@ -14,13 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      quote_rate_limits: {
+        Row: {
+          key_hash: string
+          requests: number
+          window_start: string
+        }
+        Insert: {
+          key_hash: string
+          requests?: number
+          window_start?: string
+        }
+        Update: {
+          key_hash?: string
+          requests?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
+      quote_requests: {
+        Row: {
+          company: string
+          contact_name: string
+          created_at: string
+          destination: string
+          email: string
+          id: string
+          incoterm: string
+          packaging: string
+          product: string
+          quantity_mt: number
+          required_ship_date: string
+          whatsapp: string
+        }
+        Insert: {
+          company: string
+          contact_name: string
+          created_at?: string
+          destination: string
+          email: string
+          id?: string
+          incoterm: string
+          packaging: string
+          product: string
+          quantity_mt: number
+          required_ship_date: string
+          whatsapp: string
+        }
+        Update: {
+          company?: string
+          contact_name?: string
+          created_at?: string
+          destination?: string
+          email?: string
+          id?: string
+          incoterm?: string
+          packaging?: string
+          product?: string
+          quantity_mt?: number
+          required_ship_date?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      allow_quote_request: { Args: { _key: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
