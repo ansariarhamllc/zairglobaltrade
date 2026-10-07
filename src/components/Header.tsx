@@ -1,6 +1,7 @@
 import { Globe, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import QuoteButton from "./QuoteButton";
 import { Button } from "./ui/button";
 
 const Header = () => {
@@ -9,9 +10,9 @@ const Header = () => {
 
   const navLinks = [
     { to: "/", label: "Home" },
-    { to: "/commodities", label: "Commodities" },
+    { to: "/commodities", label: "Commodities & Products" },
     { to: "/about", label: "About" },
-    { to: "/experience", label: "Experience" },
+    { to: "/experience", label: "Our Export Experience" },
     { to: "/founder", label: "Founder" },
   ];
 
@@ -23,13 +24,13 @@ const Header = () => {
             <Globe className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-lg font-black text-foreground tracking-tight">ZAIR GLOBAL TRADE</h1>
-            <p className="text-[11px] text-muted-foreground uppercase tracking-[0.2em] font-medium">Export & Import Excellence</p>
+            <p className="text-sm lg:text-lg font-bold text-foreground">ZAIR GLOBAL TRADE</p>
+            <p className="text-[11px] text-muted-foreground uppercase tracking-[0.2em] font-medium">Indian Agri & FMCG Exports</p>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-5">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -46,20 +47,18 @@ const Header = () => {
               )}
             </Link>
           ))}
-          <Button asChild variant="default" className="rounded-xl px-6 shadow-lg">
-            <Link to="/commodities">Get Quote</Link>
-          </Button>
+          <QuoteButton />
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <Button variant="ghost" size="icon" aria-label="Toggle navigation" aria-expanded={isMenuOpen} className="xl:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        </Button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-background/95 backdrop-blur-md border-t border-border px-4 py-6 flex flex-col gap-4">
+        <nav className="xl:hidden bg-background border-t border-border px-4 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -74,9 +73,7 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
-          <Button asChild variant="default" className="w-full rounded-xl mt-2">
-            <Link to="/commodities" onClick={() => setIsMenuOpen(false)}>Get Quote</Link>
-          </Button>
+          <QuoteButton />
         </nav>
       )}
     </header>

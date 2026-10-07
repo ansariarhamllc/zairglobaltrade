@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+
       
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid md:grid-cols-4 gap-10">
@@ -17,12 +16,12 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl font-black">ZAIR GLOBAL TRADE</h3>
-                <p className="text-[11px] text-primary-foreground/60 uppercase tracking-[0.2em] font-medium">Export & Import Excellence</p>
+                <p className="text-[11px] text-primary-foreground/60 uppercase tracking-[0.2em] font-medium">Indian Agri & FMCG Exports</p>
               </div>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-md leading-relaxed">
-              Connecting premium Indian agricultural commodities and FMCG products to markets worldwide. 
-              Your reliable partner for international trade with 2+ years of trust.
+              India-based exporter of agricultural commodities and FMCG products.
+              Led by Shahbaz Ansari in Malegaon, Maharashtra.
             </p>
             
             <div className="flex gap-3">
@@ -65,16 +64,17 @@ const Footer = () => {
             <h4 className="font-bold mb-5 text-accent">Quick Links</h4>
             <ul className="space-y-3">
               <li><Link to="/" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Home</Link></li>
-              <li><Link to="/commodities" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Commodities</Link></li>
+              <li><Link to="/commodities" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Commodities &amp; Products</Link></li>
               <li><Link to="/about" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">About Us</Link></li>
-              <li><Link to="/experience" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Experience</Link></li>
+              <li><Link to="/experience" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Our Export Experience</Link></li>
               <li><Link to="/founder" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">Founder</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold mb-5 text-accent">Contact Us</h4>
+            <h4 className="font-bold mb-5 text-primary-foreground"><Link to="/contact">Contact Us</Link></h4>
+            <Link to="/contact" className="inline-block underline text-sm mb-4">Quotations · Sourcing · Partnerships</Link>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 flex-shrink-0 mt-1 text-accent" />
