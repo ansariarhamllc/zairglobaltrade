@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import hero1 from "@/assets/hero-1.mp4.asset.json";
 import hero2 from "@/assets/hero-2.mp4.asset.json";
+import QuoteButton from "./QuoteButton";
 import heroPoster from "@/assets/hero-banner.jpg";
 
 // Asset pointers resolve to /__l5e/... which is only served by Lovable hosting.
@@ -81,7 +82,7 @@ const Hero = () => {
     <section
       id="home"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[min(780px,88svh)] flex items-center justify-center overflow-hidden"
     >
       <motion.div
         className="absolute inset-0 will-change-transform"
@@ -138,20 +139,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block text-sm uppercase tracking-[0.3em] text-primary-foreground/70 mb-6 font-semibold"
+            className="inline-block text-sm uppercase tracking-normal text-primary-foreground/70 mb-6 font-semibold"
           >
-            Trusted Global Trading Partner
+            Zair Global Trade · Malegaon, India
           </motion.span>
 
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-6xl lg:text-7xl font-semibold text-primary-foreground mb-6 leading-[1.1] tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-semibold text-primary-foreground mb-6 leading-[1.1] tracking-normal"
           >
-            Connecting Agriculture
+            Green Banana from India
             <br />
-            <span className="text-accent">to the World</span>
+            <span className="text-primary-foreground">for your next import order</span>
           </motion.h1>
 
           <motion.p
@@ -160,8 +161,7 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="text-base md:text-lg text-primary-foreground/75 mb-10 max-w-xl mx-auto leading-relaxed"
           >
-            Premium agricultural commodities and FMCG products sourced from India,
-            delivered globally with trust and quality.
+            Fresh green Cavendish, Robusta and Grand Naine varieties, with sourcing, packing and export coordination for buyers.
           </motion.p>
 
           <motion.div
@@ -172,32 +172,14 @@ const Hero = () => {
           >
             <Button variant="hero" size="lg" asChild className="text-sm px-7">
               <Link to="/commodities">
-                Explore Products
+                View Products
                 <ArrowRight className="h-4 w-4 ml-1" />
               </Link>
             </Button>
-            <Button variant="heroOutline" size="lg" asChild className="text-sm px-7">
-              <Link to="/about">About Us</Link>
-            </Button>
+            <QuoteButton variant="heroOutline" />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-3 gap-6 mt-16 pt-8 border-t border-primary-foreground/15 max-w-lg mx-auto"
-          >
-            {[
-              { val: "2+", label: "Years" },
-              { val: "12+", label: "Products" },
-              { val: "50+", label: "Clients" },
-            ].map((s, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl md:text-3xl font-semibold text-primary-foreground">{s.val}</p>
-                <p className="text-sm uppercase tracking-widest text-primary-foreground/55 mt-1 font-medium">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
+
         </div>
       </motion.div>
     </section>
