@@ -3,3 +3,8 @@
 - [ ] Add existing-product specifications, quotation CTAs, certification details, export process and buyer FAQs.
 - [ ] Add validated, stored RFQ submissions and segmented contact page.
 - [ ] Verify pages and quotation delivery; report publishing and email limitations.
+
+# SEO optimization
+- [x] Research export-related search phrases with Semrush for US and India where data was available.
+- [x] Improve accurate homepage and route metadata, canonical URL, favicon reference, and crawler sitemap discovery.
+- [ ] Verify the updated SEO findings and preview behavior.
