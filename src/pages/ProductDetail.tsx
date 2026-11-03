@@ -21,7 +21,7 @@ export default function ProductDetail() {
         "@type": "Product",
         name: product.name,
         description: product.intro,
-        image: `${SITE_URL}${product.image.startsWith("http") ? "" : ""}`,
+        image: `${SITE_URL}${product.image}`,
         category: product.category,
         brand: { "@type": "Brand", name: "Zair Global Trade" },
         manufacturer: { "@type": "Organization", name: "Zair Global Trade" },
