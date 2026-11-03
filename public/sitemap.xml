@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://zairglobaltrade.lovable.app/</loc></url>
-  <url><loc>https://zairglobaltrade.lovable.app/commodities</loc></url>
-  <url><loc>https://zairglobaltrade.lovable.app/about</loc></url>
-  <url><loc>https://zairglobaltrade.lovable.app/experience</loc></url>
-  <url><loc>https://zairglobaltrade.lovable.app/founder</loc></url>
-  <url><loc>https://zairglobaltrade.lovable.app/contact</loc></url>
+  <url><loc>https://zairglobaltrade.com/</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/green-banana</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/onion</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/onion-barista</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/green-chilli</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/tomato</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/drumstick</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/custard-apple</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/basmati-rice</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/yellow-corn</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/honey</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/arabica-coffee</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/farm-fresh-grapes</loc></url>
+  <url><loc>https://zairglobaltrade.com/commodities/rose-water</loc></url>
+  <url><loc>https://zairglobaltrade.com/about</loc></url>
+  <url><loc>https://zairglobaltrade.com/experience</loc></url>
+  <url><loc>https://zairglobaltrade.com/founder</loc></url>
+  <url><loc>https://zairglobaltrade.com/contact</loc></url>
 </urlset>
