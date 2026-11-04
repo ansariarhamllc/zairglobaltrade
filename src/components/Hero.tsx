@@ -148,11 +148,11 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-6xl lg:text-7xl font-semibold text-primary-foreground mb-6 leading-[1.1] tracking-normal"
+            className="text-4xl md:text-6xl lg:text-7xl font-medium text-primary-foreground mb-6 leading-[1.12] tracking-normal"
           >
-            Green Banana from India
+            Indian Agricultural Exports,
             <br />
-            <span className="text-primary-foreground">for your next import order</span>
+            <span className="text-primary-foreground">handled from farm to your port</span>
           </motion.h1>
 
           <motion.p
@@ -161,7 +161,7 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="text-base md:text-lg text-primary-foreground/75 mb-10 max-w-xl mx-auto leading-relaxed"
           >
-            Fresh green Cavendish, Robusta and Grand Naine varieties, with sourcing, packing and export coordination for buyers.
+            Fresh fruits, vegetables, grains and FMCG products sourced at origin, quality-checked and shipped with complete export documentation — for importers worldwide.
           </motion.p>
 
           <motion.div
