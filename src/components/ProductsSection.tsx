@@ -4,6 +4,7 @@ import LeadForm from "./LeadForm";
 import { products } from "@/data/products";
 import QuoteButton from "./QuoteButton";
 import bananaLeaves from "@/assets/banana-leaves.jpg";
+import leafAccent from "@/assets/banana-leaf-accent.png";
 
 const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
 
@@ -38,8 +39,9 @@ export default function ProductsSection() {
         </div>
 
         {/* Quote guide for first-time importers */}
-        <div className="rounded-xl border border-border bg-muted/40 p-6 mb-10">
-          <h3 className="text-lg mb-1">How to get a quote — 3 simple steps</h3>
+        <div className="relative rounded-xl border border-border bg-muted/40 p-6 mb-10 overflow-hidden">
+          <img src={leafAccent} alt="" aria-hidden="true" loading="lazy" width={1024} height={1024} className="pointer-events-none absolute -right-6 -top-10 h-40 w-auto opacity-15 -rotate-12"/>
+          <h3 className="text-lg mb-1 relative">How to get a quote — 3 simple steps</h3>
           <p className="text-sm text-muted-foreground mb-5">You don't need exact specifications to start. If anything is unclear, our team guides you through it.</p>
           <ol className="grid sm:grid-cols-3 gap-5">
             {quoteSteps.map(([num, title, body]) => (
