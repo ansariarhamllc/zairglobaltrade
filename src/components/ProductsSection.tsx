@@ -42,8 +42,8 @@ export default function ProductsSection() {
         <div className="relative rounded-xl border border-border bg-muted/40 p-6 mb-10 overflow-hidden">
           <img src={leafAccent} alt="" aria-hidden="true" loading="lazy" width={1024} height={1024} className="pointer-events-none absolute -right-6 -top-10 h-40 w-auto opacity-15 -rotate-12"/>
           <h3 className="text-lg mb-1 relative">How to get a quote — 3 simple steps</h3>
-          <p className="text-sm text-muted-foreground mb-5">You don't need exact specifications to start. If anything is unclear, our team guides you through it.</p>
-          <ol className="grid sm:grid-cols-3 gap-5">
+          <p className="text-sm text-muted-foreground mb-5 relative">You don't need exact specifications to start. If anything is unclear, our team guides you through it.</p>
+          <ol className="grid sm:grid-cols-3 gap-5 relative">
             {quoteSteps.map(([num, title, body]) => (
               <li key={num} className="flex gap-3">
                 <span className="shrink-0 h-8 w-8 rounded-full bg-accent text-accent-foreground text-sm font-medium flex items-center justify-center" aria-hidden="true">{num}</span>
