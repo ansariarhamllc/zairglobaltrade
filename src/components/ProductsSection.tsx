@@ -22,16 +22,7 @@ export default function ProductsSection() {
   return (
     <section id="products" className="py-16">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="relative mb-10 max-w-3xl">
-          <img
-            src={bananaLeaves}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            width={1600}
-            height={900}
-            className="pointer-events-none absolute -right-[max(0px,calc((100vw-72rem)/2))] -top-24 h-56 w-auto rounded-xl opacity-[0.12] hidden lg:block"
-          />
+        <div className="mb-10 max-w-3xl">
           <h2 className="text-3xl mb-4">Agricultural commodities &amp; FMCG products</h2>
           <p className="text-muted-foreground leading-relaxed">
             Our current export catalogue. Choose a product and variety, then request your quotation in three simple steps — no export experience needed.
