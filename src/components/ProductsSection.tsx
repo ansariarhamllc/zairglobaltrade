@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard";
 import LeadForm from "./LeadForm";
 import { products } from "@/data/products";
 import QuoteButton from "./QuoteButton";
-import bananaLeaves from "@/assets/banana-leaves.jpg";
 import leafAccent from "@/assets/banana-leaf-accent.png";
 
 const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
