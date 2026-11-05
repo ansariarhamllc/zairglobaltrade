@@ -10,7 +10,7 @@
 - [ ] Verify the updated SEO findings and preview behavior.
 
 # Catalogue usability update
-- [ ] Add a custom “Other” variety field to product cards and feature Banana Leaves, Onion Barista, and Onion on the homepage.
+- [x] Add a custom “Other” variety field to product cards and feature Banana Leaves, Onion Barista, and Onion on the homepage.
 
 # Prerequisite build before Phase 4 (approved 2026-11-03)
 - [ ] Email sender domain setup for zairglobaltrade.com; email infrastructure after DNS verification (no sends this pass).

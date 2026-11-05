@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 interface ProductCardProps {
   name: string;
@@ -14,11 +15,14 @@ interface ProductCardProps {
 
 export default function ProductCard({ name, category, image, varieties = [], onSelect, isSelected }: ProductCardProps) {
   const [variety, setVariety] = useState<string | null>(null);
+  const [otherOpen, setOtherOpen] = useState(false);
+  const [otherText, setOtherText] = useState("");
   const [specsOpen, setSpecsOpen] = useState(false);
+  const chosenVariety = otherOpen ? (otherText.trim() ? `Other — ${otherText.trim()}` : undefined) : variety ?? undefined;
 
   const specs = [
     ["Origin", "India · [ADD: growing region / processing location]"],
-    ["Variety", variety ?? varieties.join("; ")],
+    ["Variety", chosenVariety ?? varieties.join("; ")],
     ["Grade", `[ADD: ${name} grade and grading standard]`],
     ["Key quality parameters", `[ADD: ${name} measurable specifications, tolerances and test method]`],
     ["Packaging sizes", "[ADD: confirm 5 / 10 / 25 / 50 kg availability, pack material and any product-specific formats]"],
@@ -46,13 +50,13 @@ export default function ProductCard({ name, category, image, varieties = [], onS
               {varieties.map(v => {
                 const label = v.split(" — ")[0];
                 const detail = v.split(" — ")[1];
-                const active = variety === v;
+                const active = !otherOpen && variety === v;
                 return (
                   <button
                     key={v}
                     type="button"
                     aria-pressed={active}
-                    onClick={() => setVariety(active ? null : v)}
+                    onClick={() => { setOtherOpen(false); setVariety(active ? null : v); }}
                     className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
                       active ? "border-accent bg-accent/10 text-accent" : "border-border text-foreground hover:border-accent/50"
                     }`}
@@ -63,7 +67,31 @@ export default function ProductCard({ name, category, image, varieties = [], onS
                   </button>
                 );
               })}
+              <button
+                type="button"
+                aria-pressed={otherOpen}
+                aria-controls={`other-${idBase}`}
+                onClick={() => { setVariety(null); setOtherOpen(o => !o); }}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                  otherOpen ? "border-accent bg-accent/10 text-accent" : "border-border text-foreground hover:border-accent/50"
+                }`}
+              >
+                {otherOpen && <Check className="h-3.5 w-3.5" />}
+                <span>Other</span>
+              </button>
             </div>
+            {otherOpen && (
+              <div id={`other-${idBase}`} className="mt-3">
+                <label htmlFor={`other-input-${idBase}`} className="sr-only">Your {name} variety or requirement</label>
+                <Input
+                  id={`other-input-${idBase}`}
+                  value={otherText}
+                  onChange={e => setOtherText(e.target.value)}
+                  maxLength={120}
+                  placeholder="Type your variety or requirement"
+                />
+              </div>
+            )}
             <p className="text-xs text-muted-foreground mt-2">Not sure which variety fits your market? Leave it blank — our export team will recommend one.</p>
           </fieldset>
         )}
@@ -90,7 +118,7 @@ export default function ProductCard({ name, category, image, varieties = [], onS
           </dl>
         </div>
 
-        <Button className="w-full mt-5 whitespace-normal h-auto min-h-11 py-3" onClick={() => onSelect(variety ?? undefined)}>
+        <Button className="w-full mt-5 whitespace-normal h-auto min-h-11 py-3" onClick={() => onSelect(chosenVariety)}>
           Get Quote for {name}
           <ArrowRight />
         </Button>
