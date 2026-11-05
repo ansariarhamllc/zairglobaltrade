@@ -13,6 +13,7 @@ import yellowCornImg from "@/assets/yellow-corn.webp";
 import honeyImg from "@/assets/honey.webp";
 import arabicaCoffeeImg from "@/assets/arabica-coffee.webp";
 import onionBaristaImg from "@/assets/onion-barista.webp";
+import bananaLeavesImg from "@/assets/banana-leaves-product.jpg";
 
 export const ON_REQUEST = "On request";
 
@@ -58,6 +59,7 @@ const imageDims: Record<string, [string, number, number]> = {
   "Arabica Coffee": [arabicaCoffeeImg, 928, 720],
   "Farm Fresh Grapes": [grapesImg, 1440, 1920],
   "Rose Water": [roseWaterImg, 1536, 1024],
+  "Banana Leaves": [bananaLeavesImg, 1280, 1024],
 };
 
 export const productImage = (name: string) => imageDims[name]?.[0] ?? "";
@@ -77,6 +79,7 @@ const varietiesFor: Record<string, string[]> = {
   "Arabica Coffee": ["Green Arabica Beans — Unroasted", "Roasted Arabica Beans — Whole roasted", "Ground Arabica Coffee — Ground"],
   "Farm Fresh Grapes": ["Thompson Seedless — Fresh table grapes", "Flame Seedless — Fresh table grapes", "Black Seedless — Fresh table grapes"],
   "Rose Water": ["Pure Rose Water — Liquid", "Edible Rose Water — Food grade liquid", "Rose Water — Bulk liquid"],
+  "Banana Leaves": ["Fresh Banana Leaves — On request"],
 };
 
 const catalogNames = Object.keys(imageDims);

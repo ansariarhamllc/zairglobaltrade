@@ -11,6 +11,7 @@ import yellowCornImg from "@/assets/yellow-corn.png";
 import honeyImg from "@/assets/honey.png";
 import arabicaCoffeeImg from "@/assets/arabica-coffee.png";
 import onionBaristaImg from "@/assets/onion-barista.png";
+import bananaLeavesImg from "@/assets/banana-leaves-product.jpg";
 
 export const products = [
   { id: 1, name: "Green Banana", category: "Fruits", image: greenBananaImg, varieties: ["Cavendish — Fresh green", "Robusta — Fresh green", "Grand Naine — Fresh green", "Nendran — Semi-ripe"] },
@@ -26,4 +27,5 @@ export const products = [
   { id: 10, name: "Arabica Coffee", category: "Beverages", image: arabicaCoffeeImg, varieties: ["Green Arabica Beans — Unroasted", "Roasted Arabica Beans — Whole roasted", "Ground Arabica Coffee — Ground"] },
   { id: 11, name: "Farm Fresh Grapes", category: "Fruits", image: grapesImg, varieties: ["Thompson Seedless — Fresh table grapes", "Flame Seedless — Fresh table grapes", "Black Seedless — Fresh table grapes"] },
   { id: 12, name: "Rose Water", category: "FMCG", image: roseWaterImg, varieties: ["Pure Rose Water — Liquid", "Edible Rose Water — Food grade liquid", "Rose Water — Bulk liquid"] },
+  { id: 14, name: "Banana Leaves", category: "Vegetables", image: bananaLeavesImg, varieties: ["Fresh Banana Leaves — On request"] },
 ];
