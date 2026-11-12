@@ -12,6 +12,11 @@
 # Catalogue usability update
 - [x] Add a custom “Other” variety field to product cards and feature Banana Leaves, Onion Barista, and Onion on the homepage.
 
+# Business location and enquiry contact
+- [ ] Replace Malegaon with Nashik across visible site content and metadata.
+- [ ] Add a site-wide WhatsApp button to +91 9560288244.
+- [ ] Enable enquiry email delivery to zairglobaltrade@gmail.com after a verified sender domain is available; leads remain stored meanwhile.
+
 # Prerequisite build before Phase 4 (approved 2026-11-03)
 - [ ] Email sender domain setup for zairglobaltrade.com; email infrastructure after DNS verification (no sends this pass).
 - [ ] GA4 loader (env-var measurement ID, empty-safe) with rfq_submit and whatsapp_click events; document_request/brochure_download helpers.
