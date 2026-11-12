@@ -1,5 +1,6 @@
 import { Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import { business } from "@/data/business";
 
 const Footer = () => {
   return (
@@ -21,7 +22,7 @@ const Footer = () => {
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-md leading-relaxed">
               India-based exporter of agricultural commodities and FMCG products.
-              Led by Shahbaz Ansari in Malegaon, Maharashtra.
+              Led by Shahbaz Ansari in Nashik, Maharashtra.
             </p>
             
             <div className="flex gap-3">
@@ -79,7 +80,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 flex-shrink-0 mt-1 text-accent" />
                 <span className="text-primary-foreground/60 text-sm">
-                  Sr.42 Appartment.9, Nayaislampura, Malegaon 423203, India
+                  {business.address}
                 </span>
               </li>
               <li className="flex items-center gap-3">

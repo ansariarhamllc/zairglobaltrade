@@ -141,7 +141,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="inline-block text-sm uppercase tracking-normal text-primary-foreground/70 mb-6 font-semibold"
           >
-            Zair Global Trade · Malegaon, India
+            Zair Global Trade · Nashik, India
           </motion.span>
 
           <motion.h1

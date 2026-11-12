@@ -94,9 +94,9 @@ export const productDetails: ProductDetail[] = catalogNames.map((name) => {
     width,
     height,
     varieties: varietiesFor[name] ?? [],
-    intro: `${name} from India, offered for export by Zair Global Trade, Malegaon, Maharashtra. Listed varieties and product forms are shown; unconfirmed specifications are marked On request.`,
+    intro: `${name} from India, offered for export by Zair Global Trade, Nashik, Maharashtra. Listed varieties and product forms are shown; unconfirmed specifications are marked On request.`,
     specRows: [
-      ["Origin", "India — Malegaon, Maharashtra (sourcing region: On request)"],
+      ["Origin", "India — Nashik, Maharashtra (sourcing region: On request)"],
       ["Variety", (varietiesFor[name] ?? []).join("; ")],
       ["Grade", ON_REQUEST],
       ["Size / count", ON_REQUEST],

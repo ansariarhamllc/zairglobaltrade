@@ -1,8 +1,8 @@
 export const business = {
   name: "Zair Global Trade",
   founder: "Shahbaz Ansari",
-  location: "Malegaon, Maharashtra, India",
-  address: "Sr.42 Appartment.9, Nayaislampura, Malegaon 423203, India",
+  location: "Nashik, Maharashtra, India",
+  address: "Sr.42 Appartment.9, Nayaislampura, Nashik 423203, India",
   phone: "+91 9560288244",
   email: "zairglobaltrade@gmail.com",
   whatsapp: "https://wa.me/919560288244",

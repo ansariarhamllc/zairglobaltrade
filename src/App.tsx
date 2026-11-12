@@ -12,6 +12,7 @@ import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
 import Founder from "./pages/Founder";
 import NotFound from "./pages/NotFound";
+import WhatsAppContact from "./components/WhatsAppContact";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/founder" element={<Founder />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <WhatsAppContact />
         </BrowserRouter>
       </LoaderWrapper>
     </TooltipProvider>
